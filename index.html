@@ -2,41 +2,13 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Monoga Photobooth | Your story instantly captured</title>
-  <!-- Font & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #fdf8f2; /* coklat muda base */
-      color: #3e2e24; /* coklat tua */
-      font-family: 'Montserrat', sans-serif;
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
-
-    h1, h2, h3, h4, .serif {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* warna tema */
     :root {
       --cream: #fdf8f2;
       --light-brown: #d9c7b1;
@@ -44,500 +16,433 @@
       --dark-brown: #3e2e24;
       --gold: #c9a96b;
       --gold-light: #e9dac4;
-      --shadow: 0 12px 28px rgba(0,0,0,0.04), 0 4px 12px rgba(62,46,36,0.06);
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(62, 46, 36, 0.08);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
-    /* animasi dinamis */
-    @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(24px); }
-      100% { opacity: 1; transform: translateY(0); }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
+    body {
+      background-color: var(--cream);
+      color: var(--dark-brown);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
-    .shimmer-gold {
-      background: linear-gradient(120deg, transparent 0%, rgba(201,169,107,0.2) 30%, rgba(201,169,107,0.45) 50%, rgba(201,169,107,0.2) 70%, transparent 100%);
-      background-size: 200% 100%;
-      animation: shimmer 8s infinite;
+    h1, h2, h3, h4, .serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
     }
 
-    /* header */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header & Logo */
     header {
-      padding: 28px 0 16px;
-      border-bottom: 1px solid rgba(163,131,110,0.2);
-      position: relative;
+      padding: 40px 0 20px;
+      background: linear-gradient(to bottom, rgba(233, 218, 196, 0.2), transparent);
     }
 
     .logo {
       text-align: center;
+      margin-bottom: 30px;
     }
 
     .logo-main {
-      font-size: 2.6rem;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 700;
-      color: var(--dark-brown);
-      line-height: 1.1;
-      letter-spacing: 6px;
+      letter-spacing: 8px;
+      text-transform: uppercase;
     }
 
-    .logo-main i, .gold-accent {
-      color: var(--gold);
-    }
+    .logo-main i { color: var(--gold); }
 
     .logo-sub {
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 6px;
+      font-size: 0.9rem;
+      letter-spacing: 4px;
       color: var(--mid-brown);
-      margin-top: 6px;
-      font-weight: 400;
+      text-transform: uppercase;
+      margin-top: 8px;
     }
 
-    .gold-line {
-      height: 2px;
-      width: 120px;
-      background: var(--gold);
-      margin: 16px auto 10px;
-      opacity: 0.7;
-    }
-
-    /* navigasi */
+    /* Navigation */
     nav {
       display: flex;
       justify-content: center;
+      gap: 30px;
+      border-top: 1px solid rgba(165, 131, 110, 0.2);
+      border-bottom: 1px solid rgba(165, 131, 110, 0.2);
+      padding: 15px 0;
       flex-wrap: wrap;
-      gap: 28px;
-      margin: 20px 0 8px;
     }
 
     nav a {
       text-decoration: none;
       color: var(--dark-brown);
-      font-weight: 500;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 6px 0;
-      border-bottom: 2px solid transparent;
-      transition: 0.25s;
+      transition: var(--transition);
     }
 
-    nav a:hover, nav a.active {
-      border-bottom-color: var(--gold);
-      color: var(--gold);
-    }
+    nav a:hover { color: var(--gold); }
 
-    /* tombol */
-    .btn {
-      display: inline-block;
-      background: var(--gold);
-      color: #2a1f19;
-      padding: 12px 32px;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
-      border: 1px solid transparent;
-      transition: all 0.3s;
-      box-shadow: 0 6px 14px rgba(201,169,107,0.2);
-      border: 1px solid rgba(255,255,255,0.3);
-      backdrop-filter: blur(2px);
-    }
+    /* Sections */
+    section { padding: 80px 0; }
 
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid var(--gold);
-      color: var(--dark-brown);
-      box-shadow: none;
-    }
-
-    .btn:hover {
-      background: var(--dark-brown);
-      color: var(--cream);
-      border-color: var(--dark-brown);
-      transform: translateY(-3px);
-      box-shadow: 0 18px 25px -8px rgba(62,46,36,0.2);
-    }
-
-    .btn-outline:hover {
-      background: var(--gold);
-      color: var(--dark-brown);
-      border-color: var(--gold);
-    }
-
-    /* card & layout simetris */
     .section-title {
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 48px;
-      color: var(--dark-brown);
-      position: relative;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 50px;
     }
 
     .section-title span {
-      background: var(--cream);
-      padding: 0 24px;
-    }
-
-    .section-title::after {
-      content: '';
       display: block;
-      width: 90px;
-      height: 2px;
-      background: var(--gold);
-      margin: 12px auto 0;
+      font-size: 1rem;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
-    .grid-3, .grid-pricelist {
+    /* Cards Grid */
+    .grid-pricing {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
-      align-items: stretch;
     }
 
     .card {
-      background: rgba(255,255,245,0.7);
-      backdrop-filter: blur(8px);
-      background: #fffcf7;
-      border-radius: 24px;
-      padding: 28px 22px;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px 30px;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(201,169,107,0.15);
-      transition: all 0.4s ease;
-      text-align: center;
-      animation: fadeUp 0.7s ease forwards;
-      opacity: 0;
-      animation-fill-mode: forwards;
+      border: 1px solid rgba(201, 169, 107, 0.1);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
-
-    .card:nth-child(2) { animation-delay: 0.1s; }
-    .card:nth-child(3) { animation-delay: 0.2s; }
 
     .card:hover {
-      transform: scale(1.01);
+      transform: translateY(-10px);
       border-color: var(--gold);
-      box-shadow: 0 24px 36px -12px rgba(62,46,36,0.12);
+      box-shadow: 0 20px 40px rgba(62, 46, 36, 0.12);
     }
 
-    .price-tag {
-      font-size: 2.8rem;
-      font-family: 'Cormorant Garamond', serif;
-      color: var(--dark-brown);
-      margin: 16px 0 8px;
+    .card h3 {
+      font-size: 1.8rem;
+      margin: 20px 0;
+      line-height: 1.2;
+    }
+
+    /* Pricing Table */
+    .package-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+    }
+
+    .package-table td {
+      padding: 10px 0;
+      border-bottom: 1px solid #f0e6db;
+      font-size: 0.95rem;
     }
 
     .old-price {
       text-decoration: line-through;
-      font-size: 1.1rem;
-      color: #8b6f5c;
-      margin-right: 12px;
+      color: var(--mid-brown);
+      font-size: 0.85rem;
+      margin-right: 5px;
     }
 
-    .discount-badge {
-      background: var(--gold);
-      color: #1f160f;
-      padding: 4px 10px;
-      border-radius: 40px;
+    .current-price {
       font-weight: 700;
-      font-size: 0.8rem;
-      display: inline-block;
+      color: var(--dark-brown);
     }
 
-    .bank-details {
-      background: #efe6dd;
-      padding: 20px 28px;
-      border-radius: 28px;
-      margin-top: 24px;
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 15px 35px;
+      background: var(--gold);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: var(--dark-brown);
+      transform: scale(1.05);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--dark-brown);
+    }
+
+    /* Include Items */
+    .include-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      background: #fdf2e9;
+      padding: 50px;
+      border-radius: 30px;
+    }
+
+    .include-item {
+      display: flex;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .include-item i {
+      color: var(--gold);
+      margin-right: 12px;
+      width: 20px;
+    }
+
+    /* Order Section */
+    .order-box {
+      background: var(--dark-brown);
+      color: var(--cream);
+      padding: 60px;
+      border-radius: 40px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px 50px;
-      border-left: 8px solid var(--gold);
+      gap: 40px;
+      align-items: center;
     }
 
-    .bank-item {
+    .bank-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 20px;
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .bank-info {
+      margin-bottom: 15px;
       font-family: monospace;
       font-size: 1.1rem;
     }
 
+    /* Floating WhatsApp */
     .wa-float {
       position: fixed;
-      bottom: 28px;
-      right: 28px;
+      bottom: 30px;
+      right: 30px;
       background: #25D366;
       color: white;
-      width: 62px;
-      height: 62px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
-      box-shadow: 0 8px 22px rgba(37,211,102,0.3);
-      z-index: 99;
-      transition: 0.2s;
-      border: 2px solid #f5e7d9;
+      font-size: 30px;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+      z-index: 1000;
+      transition: var(--transition);
     }
 
-    .wa-float:hover {
-      transform: scale(1.08);
-      background: #128C7E;
-    }
-
-    .mirror-highlight {
-      background: linear-gradient(145deg, #f3ede6, #fff9f2);
-      border-radius: 20px;
-      padding: 12px 18px;
-      font-weight: 500;
-    }
+    .wa-float:hover { transform: rotate(15deg) scale(1.1); }
 
     footer {
+      padding: 60px 0;
       text-align: center;
-      padding: 40px 0 24px;
+      border-top: 1px solid var(--light-brown);
       color: var(--mid-brown);
-      border-top: 1px solid #dccfc2;
-      margin-top: 40px;
     }
 
-    /* responsif simetris */
-    @media (max-width: 800px) {
-      .grid-3, .grid-pricelist {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      .logo-main { font-size: 2rem; }
-    }
-
-    /* paket list styling */
-    .package-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0;
-    }
-
-    .package-table td {
-      padding: 12px 8px;
-      border-bottom: 1px dashed #c7b2a0;
-    }
-
-    .gold-text {
-      color: var(--gold);
-      font-weight: 700;
-    }
-
-    i {
-      margin-right: 8px;
-      color: var(--gold);
+    @media (max-width: 768px) {
+      .order-box { padding: 30px; }
+      .include-grid { padding: 30px; }
+      section { padding: 50px 0; }
     }
   </style>
 </head>
 <body>
 
-<!-- floating wa -->
-<a href="https://wa.me/6281927310298" target="_blank" class="wa-float" aria-label="Order via WhatsApp">
+<a href="https://wa.me/6281927310298" class="wa-float" target="_blank">
   <i class="fab fa-whatsapp"></i>
 </a>
 
-<header class="shimmer-gold">
+<header>
   <div class="container">
     <div class="logo">
-      <div class="logo-main">MONOGA <i class="fas fa-camera-retro gold-accent"></i> PHOTOBOOTH</div>
-      <div class="logo-sub">Your story instantly captured.</div>
+      <div class="logo-main">MONOGA <i class="fas fa-camera-retro"></i></div>
+      <div class="logo-sub">Your story instantly captured</div>
     </div>
-    <div class="gold-line"></div>
     <nav>
-      <a href="#tentang" class="active">Tentang</a>
-      <a href="#paket">Paket</a>
-      <a href="#template">Template</a>
-      <a href="#include">Include</a>
-      <a href="#order">Order</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#paket">Paket Harga</a>
+      <a href="#include">Fasilitas</a>
+      <a href="#order">Pemesanan</a>
     </nav>
   </div>
 </header>
 
 <main class="container">
-  <!-- Tentang Kami -->
-  <section id="tentang" style="padding: 60px 0 20px;">
-    <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
-      <div style="flex: 2; min-width: 280px;">
-        <h2 style="font-size: 2.8rem; margin-bottom: 20px; color: var(--dark-brown);">Tentang kami,</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 24px; font-weight: 300; line-height: 1.7;">
-          Monoga Photobooth merupakan layanan photobooth yang berbasis di Bali, terinspirasi dari kata Jepang <strong>“Monogatari”</strong> yang berarti cerita.<br><br>
-          Kami percaya bahwa setiap momen memiliki cerita yang layak untuk diabadikan, mulai dari tawa, cinta, hingga kenangan yang hanya terjadi sekali seumur hidup. Dengan pendekatan modern, kami menggabungkan desain elegan, cetak instan, dan pembagian digital yang praktis.
+  
+  <section id="tentang">
+    <div style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
+      <div style="flex: 1; min-width: 300px;">
+        <h2 class="serif" style="font-size: 3rem; margin-bottom: 25px;">Setiap momen punya cerita.</h2>
+        <p style="margin-bottom: 30px; font-weight: 300; font-size: 1.1rem;">
+          Monoga Photobooth Bali (dari kata <i>Monogatari</i>) hadir untuk mengabadikan tawa dan kenangan Anda dalam sekejap. Dengan kualitas cetak premium dan sistem digital modern, kami memastikan setiap detik berharga Anda tersimpan selamanya.
         </p>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <span class="btn" onclick="document.getElementById('paket').scrollIntoView({behavior:'smooth'});">Lihat Paket Diskon 15%</span>
-          <a href="https://wa.me/6281927310298" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Tanya Sekarang</a>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+          <a href="#paket" class="btn">Lihat Promo 15%</a>
+          <a href="https://wa.me/6281927310298" class="btn btn-outline">Konsultasi Gratis</a>
         </div>
       </div>
-      <div style="flex: 1.2; min-width: 240px; text-align: center;">
-        <div style="background: #e7dbcf; border-radius: 200px 200px 40px 40px; padding: 20px 20px 0; box-shadow: var(--shadow); border: 2px solid var(--gold-light);">
-          <div style="font-size: 5rem; color: var(--dark-brown);"><i class="fas fa-camera"></i></div>
-          <p style="padding: 20px; font-style: italic;">✨ cerita-mu, seketika tercetak ✨</p>
+      <div style="flex: 1; min-width: 300px; text-align: center;">
+        <div style="position: relative; display: inline-block;">
+            <div style="width: 280px; height: 380px; background: var(--light-brown); border-radius: 140px 140px 20px 20px; overflow: hidden; border: 8px solid white; box-shadow: var(--shadow);">
+                <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: #e9dac4;">
+                    <i class="fas fa-heart" style="font-size: 5rem; color: var(--mid-brown); opacity: 0.5;"></i>
+                </div>
+            </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PAKET & HARGA section -->
-  <section id="paket" style="padding: 60px 0;">
-    <h2 class="section-title"><span>SPECIAL POTONGAN HARGA 15%</span></h2>
-    
-    <!-- 3 Kolom paket utama -->
-    <div class="grid-3">
-      <!-- Card 1 : QR SCAN TANPA PRINT -->
+  <section id="paket">
+    <h2 class="section-title"><span>Special Offer</span>Promo Diskon 15%</h2>
+    <div class="grid-pricing">
+      
       <div class="card">
-        <i class="fas fa-qrcode" style="font-size: 2.6rem; color: var(--gold);"></i>
-        <h3>PAKET QR SCAN<br>TANPA PRINT</h3>
-        <p style="font-size: 0.9rem;">QR Scan Tidak Terbatas</p>
-        <div style="margin: 20px 0;">
-          <table class="package-table" style="text-align: left;">
-            <tr><td>3 Jam</td><td><span class="old-price">1.400k</span> <strong>1.190k</strong></td></tr>
-            <tr><td>4 Jam</td><td><span class="old-price">1.650k</span> <strong>1.402,5k</strong></td></tr>
-            <tr><td>5 Jam</td><td><span class="old-price">1.900k</span> <strong>1.615k</strong></td></tr>
-            <tr><td>6 Jam</td><td><span class="old-price">2.150k</span> <strong>1.827,5k</strong></td></tr>
-            <tr><td>7 Jam</td><td><span class="old-price">2.400k</span> <strong>2.040k</strong></td></tr>
-            <tr><td>8 Jam</td><td><span class="old-price">2.650k</span> <strong>2.252,5k</strong></td></tr>
-            <tr><td>9 Jam</td><td><span class="old-price">2.900k</span> <strong>2.465k</strong></td></tr>
-            <tr><td>10 Jam</td><td><span class="old-price">3.150k</span> <strong>2.677,5k</strong></td></tr>
-          </table>
-        </div>
-        <div class="mirror-highlight"><i class="fas fa-mirror"></i> Standing mirror + request tulisan +250k</div>
-        <p style="margin-top: 16px;">🎁 Free welcome mirror standing 7-10 jam</p>
-        <p style="font-size: 0.9rem;">Tambahan 1 jam QR: 400k</p>
-      </div>
-
-      <!-- Card 2 : QR SCAN DAN PRINT (Terbatas) -->
-      <div class="card">
-        <i class="fas fa-print" style="font-size: 2.6rem; color: var(--gold);"></i>
-        <h3>QR SCAN & PRINT<br><span style="font-size: 1rem;">(Terbatas)</span></h3>
-        <table class="package-table" style="text-align: left;">
-          <tr><td>100 Print / 4 Jam</td><td><span class="old-price">1.900k</span> <strong>1.615k</strong></td></tr>
-          <tr><td>200 Print / 5 Jam</td><td><span class="old-price">2.850k</span> <strong>2.422,5k</strong></td></tr>
-          <tr><td>300 Print / 6 Jam</td><td><span class="old-price">3.550k</span> <strong>3.017,5k</strong></td></tr>
-          <tr><td>400 Print / 7 Jam</td><td><span class="old-price">4.200k</span> <strong>3.570k</strong></td></tr>
-          <tr><td>500 Print / 8 Jam</td><td><span class="old-price">4.800k</span> <strong>4.080k</strong></td></tr>
-          <tr><td>600 Print / 9 Jam</td><td><span class="old-price">5.400k</span> <strong>4.590k</strong></td></tr>
-          <tr><td>700 Print / 10 Jam</td><td><span class="old-price">6.000k</span> <strong>5.100k</strong></td></tr>
-        </table>
-        <div class="mirror-highlight"><i class="fas fa-mirror"></i> Standing mirror + request +250k</div>
-        <p>🎁 Free welcome mirror 6-10 jam</p>
-        <p>➕ 1 jam QR: 400k | +1 Print: 15k</p>
-      </div>
-
-      <!-- Card 3 : QR SCAN DAN PRINT TIDAK TERBATAS -->
-      <div class="card">
-        <i class="fas fa-infinity" style="font-size: 2.6rem; color: var(--gold);"></i>
-        <h3>UNLIMITED<br>QR SCAN & PRINT</h3>
+        <i class="fas fa-qrcode" style="font-size: 2rem; color: var(--gold);"></i>
+        <h3>QR Scan Only<br><span style="font-size: 0.9rem; font-family: 'Montserrat';">Tanpa Print</span></h3>
         <table class="package-table">
-          <tr><td>2 Jam</td><td><span class="old-price">3.700k</span> <strong>3.145k</strong></td></tr>
-          <tr><td>3 Jam</td><td><span class="old-price">4.400k</span> <strong>3.740k</strong></td></tr>
-          <tr><td>4 Jam</td><td><span class="old-price">5.100k</span> <strong>4.335k</strong></td></tr>
-          <tr><td>5 Jam</td><td><span class="old-price">5.900k</span> <strong>5.015k</strong></td></tr>
-          <tr><td>6 Jam</td><td><span class="old-price">6.600k</span> <strong>5.610k</strong></td></tr>
-          <tr><td>7 Jam</td><td><span class="old-price">7.300k</span> <strong>6.205k</strong></td></tr>
-          <tr><td>8 Jam</td><td><span class="old-price">8.000k</span> <strong>6.800k</strong></td></tr>
+          <tr><td>3 Jam</td><td><span class="old-price">1.400k</span><span class="current-price">1.190k</span></td></tr>
+          <tr><td>5 Jam</td><td><span class="old-price">1.900k</span><span class="current-price">1.615k</span></td></tr>
+          <tr><td>8 Jam</td><td><span class="old-price">2.650k</span><span class="current-price">2.252k</span></td></tr>
+          <tr><td>10 Jam</td><td><span class="old-price">3.150k</span><span class="current-price">2.677k</span></td></tr>
         </table>
-        <p>🎁 Free welcome mirror 4-8 jam</p>
-        <p>➕ 1 Jam QR: 400k | 1 Jam & Unlimited Print: 1.700k</p>
-        <div class="mirror-highlight" style="margin-top: 16px;">✨ standing mirror + request 250k</div>
+        <p style="font-size: 0.85rem; color: var(--mid-brown); margin-top: auto;">*Tambahan 1 jam QR: 400k<br>🎁 Free welcome mirror (7-10 jam)</p>
       </div>
+
+      <div class="card" style="border-color: var(--gold); transform: scale(1.05); z-index: 2; background: #fffdfb;">
+        <i class="fas fa-print" style="font-size: 2rem; color: var(--gold);"></i>
+        <h3>QR Scan & Print<br><span style="font-size: 0.9rem; font-family: 'Montserrat';">Quota Terbatas</span></h3>
+        <table class="package-table">
+          <tr><td>100 Pcs / 4 Jam</td><td><span class="old-price">1.900k</span><span class="current-price">1.615k</span></td></tr>
+          <tr><td>300 Pcs / 6 Jam</td><td><span class="old-price">3.550k</span><span class="current-price">3.017k</span></td></tr>
+          <tr><td>500 Pcs / 8 Jam</td><td><span class="old-price">4.800k</span><span class="current-price">4.080k</span></td></tr>
+          <tr><td>700 Pcs / 10 Jam</td><td><span class="old-price">6.000k</span><span class="current-price">5.100k</span></td></tr>
+        </table>
+        <p style="font-size: 0.85rem; color: var(--mid-brown); margin-top: auto;">*Extra Print: 15k/lembar<br>🎁 Free welcome mirror (6-10 jam)</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-infinity" style="font-size: 2rem; color: var(--gold);"></i>
+        <h3>Unlimited Print<br><span style="font-size: 0.9rem; font-family: 'Montserrat';">QR + Cetak Puas</span></h3>
+        <table class="package-table">
+          <tr><td>2 Jam</td><td><span class="old-price">3.700k</span><span class="current-price">3.145k</span></td></tr>
+          <tr><td>4 Jam</td><td><span class="old-price">5.100k</span><span class="current-price">4.335k</span></td></tr>
+          <tr><td>6 Jam</td><td><span class="old-price">6.600k</span><span class="current-price">5.610k</span></td></tr>
+          <tr><td>8 Jam</td><td><span class="old-price">8.000k</span><span class="current-price">6.800k</span></td></tr>
+        </table>
+        <p style="font-size: 0.85rem; color: var(--mid-brown); margin-top: auto;">*Extra 1 jam unlimited: 1.700k<br>🎁 Free welcome mirror (4-8 jam)</p>
+      </div>
+
     </div>
-    <p style="text-align: center; margin-top: 28px; font-style: italic; color: var(--mid-brown);">Semua paket tidak termasuk dekorasi dan backdrop</p>
+    <p style="text-align: center; margin-top: 40px; font-size: 0.9rem; opacity: 0.7;">*Harga di atas belum termasuk dekorasi backdrop.</p>
   </section>
 
-  <!-- PILIH TEMPLATE -->
-  <section id="template" style="padding: 40px 0;">
-    <h2 class="section-title"><span>PILIH TEMPLATE YANG KAMU MAU</span></h2>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-      <div style="background: #f3ede6; border-radius: 28px; padding: 36px 28px; min-width: 200px; text-align: center; box-shadow: var(--shadow);">
-        <i class="fas fa-images" style="font-size: 3.5rem; color: var(--gold);"></i>
-        <h4 style="margin: 16px 0;">Elegant Script</h4>
-        <p style="color: #5f4a3c;">Minimalis & mewah</p>
-      </div>
-      <div style="background: #f3ede6; border-radius: 28px; padding: 36px 28px; min-width: 200px; text-align: center; box-shadow: var(--shadow);">
-        <i class="fas fa-paint-brush" style="font-size: 3.5rem; color: var(--gold);"></i>
-        <h4 style="margin: 16px 0;">Modern Vibe</h4>
-        <p style="color: #5f4a3c;">Geometris & clean</p>
-      </div>
-      <div style="background: #f3ede6; border-radius: 28px; padding: 36px 28px; min-width: 200px; text-align: center; box-shadow: var(--shadow);">
-        <i class="fas fa-leaf" style="font-size: 3.5rem; color: var(--gold);"></i>
-        <h4 style="margin: 16px 0;">Botanical Gold</h4>
-        <p style="color: #5f4a3c;">Aksen emas & dedaunan</p>
-      </div>
+  <section id="include">
+    <h2 class="section-title"><span>Services</span>Apa yang anda dapatkan?</h2>
+    <div class="include-grid">
+      <div class="include-item"><i class="fas fa-check-circle"></i> 1 Set Mesin Photobooth Premium</div>
+      <div class="include-item"><i class="fas fa-check-circle"></i> 2 Operator Profesional</div>
+      <div class="include-item"><i class="fas fa-check-circle"></i> QR Code Digital Sharing</div>
+      <div class="include-item"><i class="fas fa-check-circle"></i> Desain Frame Custom sesuai tema</div>
+      <div class="include-item"><i class="fas fa-check-circle"></i> Fitur Boomerang & GIF</div>
+      <div class="include-item"><i class="fas fa-check-circle"></i> Fun Props (Aksesoris Lucu)</div>
+      <div class="include-item"><i class="fas fa-check-circle"></i> Studio Lighting Profesional</div>
+      <div class="include-item"><i class="fas fa-check-circle"></i> Softcopy via Google Drive</div>
+      <div class="include-item"><i class="fas fa-check-circle"></i> Gratis Transport (Denpasar & Gianyar)</div>
     </div>
   </section>
 
-  <!-- APA SAJA YANG DIDAPAT -->
-  <section id="include" style="padding: 40px 0;">
-    <h2 class="section-title"><span>Apa saja yang didapat di dalam paket ?</span></h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px 30px; background: #f9f1e9; padding: 40px 30px; border-radius: 48px;">
-      <div><i class="fas fa-camera"></i> 1 set photobooth</div>
-      <div><i class="fas fa-user-tie"></i> 2 operator profesional</div>
-      <div><i class="fas fa-qrcode"></i> QR code sharing</div>
-      <div><i class="fas fa-pen-fancy"></i> Desain frame custom</div>
-      <div><i class="fas fa-video"></i> Fitur boomerang</div>
-      <div><i class="fas fa-film"></i> Animasi GIF</div>
-      <div><i class="fas fa-print"></i> Foto cetak (paket print)</div>
-      <div><i class="fas fa-border-all"></i> Frame cetak (print)</div>
-      <div><i class="fas fa-mask"></i> Fun props</div>
-      <div><i class="fas fa-lightbulb"></i> Pencahayaan tambahan</div>
-      <div><i class="fas fa-hdd"></i> Drive file original</div>
-      <div><i class="fas fa-truck"></i> Gratis transport Denpasar & Gianyar</div>
-    </div>
-    <p style="margin-top: 24px;">✨ Standing mirror & welcome mirror tersedia (sesuai paket)</p>
-  </section>
-
-  <!-- ORDER & PEMBAYARAN -->
-  <section id="order" style="padding: 60px 0;">
-    <div style="background: linear-gradient(135deg, #e7dbcf 0%, #f4ebe3 100%); border-radius: 48px; padding: 40px 32px; box-shadow: var(--shadow);">
-      <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
-        <div style="flex:2;">
-          <h3 style="font-size: 2.2rem;">Siap mengabadikan ceritamu?</h3>
-          <p style="margin: 20px 0;">Hubungi kami langsung via WhatsApp, atau lakukan pembayaran DP ke rekening berikut.</p>
-          <a href="https://wa.me/6281927310298" class="btn" style="font-size: 1.2rem; padding: 16px 40px;"><i class="fab fa-whatsapp"></i> +62 819-2731-0298</a>
+  <section id="order">
+    <div class="order-box">
+      <div style="flex: 1; min-width: 300px;">
+        <h2 class="serif" style="font-size: 2.5rem; margin-bottom: 20px;">Booking Jadwal Anda Sekarang</h2>
+        <p style="margin-bottom: 30px; opacity: 0.8;">Hubungi tim kami untuk konsultasi tanggal dan tema. Pembayaran DP dapat dilakukan melalui rekening resmi kami.</p>
+        <a href="https://wa.me/6281927310298" class="btn" style="background: #25D366; color: white; display: inline-flex; align-items: center; gap: 10px;">
+          <i class="fab fa-whatsapp"></i> Chat WhatsApp Kami
+        </a>
+      </div>
+      <div class="bank-card">
+        <div class="bank-info">
+          <p style="font-family: 'Montserrat'; font-size: 0.8rem; color: var(--gold); margin-bottom: 5px;">BCA Account</p>
+          <strong>7730691801</strong><br>a.n Ni Kadek Dwi Wahyuni
         </div>
-        <div style="flex:3;">
-          <div class="bank-details">
-            <div class="bank-item"><i class="fas fa-university"></i> <strong>BCA</strong> 7730691801 a.n Ni Kadek Dwi Wahyuni</div>
-            <div class="bank-item"><i class="fas fa-university"></i> <strong>BRI</strong> 024801014999530 a.n Putu Dimas Sanjaya</div>
-          </div>
-          <p style="margin-top: 16px; text-align: right; font-size: 0.9rem;">*konfirmasi via WA setelah transfer</p>
+        <div class="bank-info" style="margin-top: 20px;">
+          <p style="font-family: 'Montserrat'; font-size: 0.8rem; color: var(--gold); margin-bottom: 5px;">BRI Account</p>
+          <strong>024801014999530</strong><br>a.n Putu Dimas Sanjaya
         </div>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer>
   <div class="container">
-    <p style="letter-spacing: 3px;">MONOGA PHOTOBOOTH — Bali</p>
-    <p style="margin-top: 12px;">© 2025 Monoga.Photobooth • cerita anda, seketika diabadikan.</p>
-    <div style="margin: 20px 0 0; display: flex; justify-content: center; gap: 28px;">
-      <span><i class="fab fa-instagram"></i> @monoga.photobooth</span>
-      <span><i class="far fa-envelope"></i> halo@monogaphotobooth.com</span>
+    <p style="letter-spacing: 3px; font-weight: 600;">MONOGA PHOTOBOOTH</p>
+    <p style="font-size: 0.8rem; margin: 15px 0;">Bali, Indonesia | © 2026 Cerita Anda, Seketika Diabadikan.</p>
+    <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.2rem; margin-top: 20px;">
+      <a href="#" style="color: var(--mid-brown);"><i class="fab fa-instagram"></i></a>
+      <a href="#" style="color: var(--mid-brown);"><i class="far fa-envelope"></i></a>
     </div>
   </div>
 </footer>
 
-<!-- small effect -->
 <script>
-  (function() {
-    // smooth reveal + simetri
-    const cards = document.querySelectorAll('.card');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-        }
-      });
-    }, { threshold: 0.1 });
-    cards.forEach(c => observer.observe(c));
-  })();
+  // Simple Animation on Scroll
+  const observerOptions = { threshold: 0.1 };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.card, .include-item, .order-box').forEach(el => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(30px)";
+    el.style.transition = "all 0.6s ease-out";
+    observer.observe(el);
+  });
 </script>
+
 </body>
 </html>
