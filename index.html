@@ -262,7 +262,23 @@
       padding: 30px; border-radius: 25px;
       backdrop-filter: blur(10px);
     }
-    .bank-card p { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+
+    /* Penambahan CSS untuk Logo Bank */
+    .bank-info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .bank-logo {
+      height: 22px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1); /* Membuat logo putih agar elegan */
+      opacity: 0.9;
+    }
+
+    .bank-card p { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; }
     .bank-card strong { font-size: 1.4rem; letter-spacing: 2px; font-family: monospace; }
     .bank-card small { font-size: 0.85rem; opacity: 0.8; margin-top: 5px; display: block; }
 
@@ -458,12 +474,18 @@
       </div>
       <div class="bank-wrapper">
         <div class="bank-card">
-          <p>BCA Account</p>
+          <div class="bank-info-header">
+            <p>BCA Account</p>
+            <img src="https://i.postimg.cc/mD87f9p3/bca-logo.png" alt="BCA" class="bank-logo">
+          </div>
           <strong>7730691801</strong><br>
           <small>a.n Ni Kadek Dwi Wahyuni</small>
         </div>
         <div class="bank-card">
-          <p>BRI Account</p>
+          <div class="bank-info-header">
+            <p>BRI Account</p>
+            <img src="https://i.postimg.cc/D0Y48vX3/bri-logo.png" alt="BRI" class="bank-logo">
+          </div>
           <strong>024801014999530</strong><br>
           <small>a.n Putu Dimas Sanjaya</small>
         </div>
