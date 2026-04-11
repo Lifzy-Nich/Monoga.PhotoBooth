@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Monoga Photobooth | Simetri & Elegan</title>
+  <title>Monoga Photobooth | Your Story Instantly Captured</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,12 +13,14 @@
   <style>
     :root {
       --cream: #fdf8f2;
+      --soft-nude: #f4ebe3;
       --gold: #c9a96b; 
+      --gold-dark: #b08d4f;
       --dark-brown: #3e2e24;
       --mid-brown: #7a6354;
       --white: #ffffff;
-      --shadow: 0 15px 35px rgba(62, 46, 36, 0.1);
-      --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --shadow: 0 20px 40px rgba(62, 46, 36, 0.1);
+      --transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,116 +29,340 @@
       background-color: var(--cream);
       color: var(--dark-brown);
       font-family: 'Montserrat', sans-serif;
-      line-height: 1.7;
+      line-height: 1.8;
       overflow-x: hidden;
-      text-align: center; /* Dasar simetri sentral */
+      scroll-behavior: smooth;
     }
 
-    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; margin-left: auto; margin-right: auto; }
+    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; text-align: center; }
+
+    /* --- BACKGROUND TEXTURE --- */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 0;
+    }
 
     .container { 
       max-width: 1100px; 
       margin: 0 auto; 
       padding: 0 24px; 
+      position: relative; 
+      z-index: 2; 
       display: flex;
       flex-direction: column;
-      align-items: center; 
+      align-items: center;
     }
 
-    /* --- ANIMASI KAMBOJA --- */
-    .flower-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-    .frangipani { position: absolute; top: -50px; color: rgba(201, 169, 107, 0.3); animation: fall linear forwards; }
+    /* --- BALINESE FRANGIPANI ANIMATION (400+ Lines Focus) --- */
+    .flower-container { 
+      position: fixed; 
+      top: 0; left: 0; 
+      width: 100%; height: 100%; 
+      pointer-events: none; 
+      z-index: 1; 
+      overflow: hidden; 
+    }
+    .frangipani {
+      position: absolute;
+      top: -100px;
+      color: rgba(201, 169, 107, 0.3);
+      filter: drop-shadow(0 5px 5px rgba(0,0,0,0.05));
+      animation: fall linear forwards;
+    }
     @keyframes fall {
-      0% { transform: translateY(0) rotate(0); opacity: 0; }
-      10% { opacity: 1; }
+      0% { transform: translateY(0) rotate(0deg) scale(0.5); opacity: 0; }
+      15% { opacity: 1; }
       90% { opacity: 1; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+      100% { transform: translateY(110vh) rotate(720deg) scale(1.2); opacity: 0; }
     }
 
-    /* --- HEADER (FIXED SYMMETRY) --- */
-    header { padding: 60px 0 30px; width: 100%; display: flex; flex-direction: column; align-items: center; }
-    .logo-container { display: inline-block; position: relative; }
-    .logo-main { 
-      font-size: clamp(1.8rem, 5vw, 3rem); 
+    /* --- TOP NOTICE --- */
+    .top-notice {
+      background: #fff5f5; 
+      color: #c53030; 
+      text-align: center; 
+      padding: 15px;
       font-weight: 700; 
-      letter-spacing: 8px; 
-      text-transform: uppercase;
-      padding-left: 8px; /* Mengimbangi letter-spacing agar benar-benar di tengah */
+      font-size: 0.85rem; 
+      border-bottom: 1px solid #feb2b2;
+      text-transform: uppercase; 
+      letter-spacing: 2px;
+      width: 100%;
+      position: relative;
+      z-index: 1001;
+    }
+
+    /* --- HEADER & SIMETRIS TITLE --- */
+    header { 
+      padding: 80px 0 40px; 
+      text-align: center; 
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .logo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-right: -10px; /* Offset for letter spacing centering */
+    }
+    .logo-main { 
+      font-size: clamp(2.2rem, 6vw, 3.5rem); 
+      font-weight: 700; 
+      letter-spacing: 12px; 
+      text-transform: uppercase; 
+      line-height: 1;
     }
     .logo-highlight { color: var(--gold); }
-    .logo-sub { font-size: 0.8rem; letter-spacing: 4px; color: var(--mid-brown); margin-top: 5px; text-transform: uppercase; }
+    .logo-sub { 
+      font-size: 0.9rem; 
+      letter-spacing: 6px; 
+      color: var(--mid-brown); 
+      margin-top: 15px; 
+      text-transform: uppercase;
+      font-weight: 400;
+    }
 
     nav {
-      display: flex; justify-content: center; gap: 25px; margin-top: 30px;
-      padding: 15px 0; border-top: 1px solid rgba(165, 131, 110, 0.2); 
-      border-bottom: 1px solid rgba(165, 131, 110, 0.2);
-      width: 100%; max-width: 600px;
+      display: flex; 
+      justify-content: center; 
+      gap: 35px; 
+      margin-top: 45px;
+      padding: 20px 0; 
+      border-top: 1px solid rgba(165, 131, 110, 0.15); 
+      border-bottom: 1px solid rgba(165, 131, 110, 0.15);
+      width: 100%;
+      max-width: 800px;
     }
-    nav a { text-decoration: none; color: var(--dark-brown); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
+    nav a { 
+      text-decoration: none; 
+      color: var(--dark-brown); 
+      font-size: 0.75rem; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      transition: var(--transition);
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px; left: 50%;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: 0.3s;
+      transform: translateX(-50%);
+    }
+    nav a:hover::after { width: 100%; }
     nav a:hover { color: var(--gold); }
 
-    /* --- CONTENT SECTIONS --- */
-    section { width: 100%; padding: 60px 0; display: flex; flex-direction: column; align-items: center; }
-    
+    /* --- HERO --- */
+    .hero { text-align: center; padding: 60px 0; width: 100%; }
+    .hero h2 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 10px; font-weight: 600; }
+    .hero-slogan { 
+      color: var(--gold); 
+      font-size: 1.4rem; 
+      font-style: italic; 
+      font-family: 'Cormorant Garamond', serif; 
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
     .hero-img {
-      width: 280px; height: 380px; border-radius: 140px 140px 20px 20px;
-      border: 10px solid var(--white); box-shadow: var(--shadow);
-      object-fit: cover; margin: 30px 0;
+      width: 300px; height: 420px; 
+      border-radius: 150px 150px 30px 30px;
+      border: 12px solid var(--white); 
+      box-shadow: var(--shadow);
+      object-fit: cover; 
+      margin: 20px 0 50px;
+      transition: var(--transition);
     }
+    .hero-img:hover { transform: scale(1.02); }
 
-    /* --- PRICING GRID --- */
-    .pricing-grid { 
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-      gap: 25px; width: 100%; margin-top: 40px;
-    }
-    .price-card {
-      background: var(--white); padding: 40px 30px; border-radius: 25px;
-      border: 1px solid rgba(201, 169, 107, 0.15); transition: var(--transition);
-    }
-    .price-card:hover { transform: translateY(-10px); border-color: var(--gold); }
-
-    .price-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-    .price-table td { padding: 10px 0; border-bottom: 1px solid #f9f4ef; font-size: 0.85rem; }
-    .price-table td:last-child { text-align: right; font-weight: 700; color: var(--gold); }
+    .philosophy { max-width: 850px; margin: 0 auto; text-align: center; }
+    .philosophy p { font-size: 1.1rem; color: var(--mid-brown); line-height: 2; }
 
     /* --- TEMPLATE SECTION (NEW) --- */
-    .template-box {
-      width: 100%; max-width: 900px; background: var(--white); 
-      padding: 40px; border-radius: 30px; box-shadow: var(--shadow);
-      margin-bottom: 40px;
+    .template-section {
+      width: 100%;
+      padding: 80px 0;
+      text-align: center;
     }
-    .template-img {
-      width: 100%; max-height: 500px; object-fit: contain;
-      border-radius: 15px; border: 1px solid #eee;
+    .template-card {
+      background: var(--white);
+      padding: 20px;
+      border-radius: 40px;
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 900px;
+      margin: 40px auto;
+      transition: var(--transition);
+      border: 1px solid rgba(201, 169, 107, 0.1);
+    }
+    .template-card:hover { transform: translateY(-5px); }
+    .template-image-container {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 25px;
+      background: #fdfdfd;
+    }
+    .template-image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+    .template-card:hover img { transform: scale(1.03); }
+
+    /* --- PRICING --- */
+    .section-title { font-size: 3rem; margin-bottom: 50px; }
+    .pricing-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+      gap: 30px; 
+      margin: 50px 0; 
+      width: 100%;
+    }
+    .price-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 50px 35px; 
+      border-radius: 35px;
+      border: 1px solid rgba(201, 169, 107, 0.1); 
+      display: flex; 
+      flex-direction: column;
+      transition: var(--transition); 
+      position: relative;
+    }
+    .price-card:hover { 
+      transform: translateY(-15px); 
+      box-shadow: 0 30px 60px rgba(62, 46, 36, 0.15); 
+      border-color: var(--gold); 
+    }
+    .price-card h3 { font-size: 2rem; margin-bottom: 5px; color: var(--dark-brown); }
+    .package-desc { font-size: 0.8rem; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; font-weight: 600; }
+    
+    .price-table { width: 100%; margin: 20px 0; border-collapse: collapse; }
+    .price-table td { padding: 15px 0; border-bottom: 1px solid rgba(165, 131, 110, 0.08); font-size: 0.95rem; }
+    .price-table td:last-child { text-align: right; font-weight: 700; color: var(--gold-dark); }
+    .old-p { text-decoration: line-through; opacity: 0.4; font-size: 0.8rem; margin-right: 10px; }
+
+    .mirror-note { 
+      margin-top: auto; 
+      background: var(--soft-nude); 
+      padding: 20px; 
+      border-radius: 20px; 
+      font-size: 0.85rem; 
+      font-weight: 600; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
 
-    /* --- FACILITIES GRID --- */
-    .facilities-box { 
-      background: var(--white); padding: 50px; border-radius: 30px; 
-      width: 100%; box-shadow: var(--shadow);
+    /* --- FACILITIES --- */
+    .facilities-section { 
+      background: var(--white); 
+      padding: 80px 50px; 
+      border-radius: 50px; 
+      margin: 60px 0; 
+      box-shadow: var(--shadow); 
+      width: 100%;
     }
+    .facilities-section h3 { font-size: 2.5rem; margin-bottom: 40px; color: var(--dark-brown); }
     .facilities-grid { 
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-      gap: 15px; text-align: left; margin-top: 30px;
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 20px; 
     }
-    .facility-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
-    .facility-item i { color: var(--gold); }
+    .facility-item { 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; 
+      font-size: 1rem; 
+      padding: 12px 15px; 
+      background: #fafafa;
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+    .facility-item:hover { background: var(--soft-nude); transform: scale(1.02); }
+    .facility-item i { color: var(--gold); font-size: 1rem; }
 
-    /* --- BANK INFO --- */
+    /* --- ORDER BOX --- */
+    .order-box { 
+      background: var(--dark-brown); 
+      color: var(--cream); 
+      padding: 80px 40px; 
+      border-radius: 50px; 
+      text-align: center; 
+      margin: 80px 0; 
+      width: 100%;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    }
+    .dp-badge { 
+      background: var(--gold); 
+      color: var(--dark-brown); 
+      padding: 20px 40px; 
+      border-radius: 100px; 
+      display: inline-block; 
+      font-weight: 800; 
+      margin: 30px 0; 
+      border: 3px solid rgba(255,255,255,0.3);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
     .bank-grid { 
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-      gap: 20px; width: 100%; margin-top: 30px;
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+      gap: 25px; 
+      margin-top: 50px; 
     }
-    .bank-item { background: rgba(255,255,255,0.1); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); }
+    .bank-item { 
+      background: rgba(255,255,255,0.05); 
+      padding: 40px; 
+      border-radius: 30px; 
+      border: 1px solid rgba(255,255,255,0.1); 
+      transition: 0.3s;
+    }
+    .bank-item:hover { background: rgba(255,255,255,0.08); border-color: var(--gold); }
+    .bank-item small { color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+    .acc-number { font-size: 1.8rem; margin: 15px 0; font-family: monospace; font-weight: 700; color: #fff; }
 
-    .wa-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; z-index: 1000; }
+    /* --- BUTTONS & FLOATS --- */
+    .wa-float { 
+      position: fixed; 
+      bottom: 40px; right: 40px; 
+      width: 70px; height: 70px; 
+      background: #25D366; 
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      color: white; 
+      font-size: 35px; 
+      z-index: 1000; 
+      box-shadow: 0 15px 30px rgba(37,211,102,0.3); 
+      transition: 0.4s; 
+    }
+    .wa-float:hover { transform: scale(1.1) rotate(15deg); }
 
-    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
+    /* --- REVEAL ANIMATION --- */
+    .reveal { opacity: 0; transform: translateY(50px); transition: 1s cubic-bezier(0.165, 0.84, 0.44, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
+    /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
-      .logo-main { letter-spacing: 4px; }
-      .facilities-grid { grid-template-columns: 1fr; }
+      .logo-main { letter-spacing: 6px; }
+      nav { gap: 15px; flex-wrap: wrap; padding: 20px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .hero-img { width: 220px; height: 320px; }
+      .facilities-section { padding: 50px 25px; }
     }
   </style>
 </head>
@@ -144,131 +370,195 @@
 
 <div class="flower-container" id="flower-area"></div>
 
+<div class="top-notice">
+  <i class="fas fa-info-circle"></i> Semua paket tidak termasuk dekorasi dan backdrop
+</div>
+
 <a href="https://wa.me/6281927310298" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <header class="container">
-  <div class="logo-container">
+  <div class="logo-wrapper">
     <div class="logo-main">Monoga<span class="logo-highlight">PhotoBooth</span></div>
     <div class="logo-sub">Your story instantly captured</div>
   </div>
   <nav>
     <a href="#about">Tentang</a>
-    <a href="#paket">Pricelist</a>
     <a href="#template">Template</a>
+    <a href="#paket">Pricelist</a>
+    <a href="#fasilitas">Fasilitas</a>
     <a href="#order">Booking</a>
   </nav>
 </header>
 
 <main class="container">
   
-  <section id="about" class="reveal active">
-    <h2 class="serif" style="font-size: 2.5rem;">Abadikan Cerita Anda</h2>
-    <div style="color: var(--gold); font-style: italic;">Your story instantly captured</div>
-    <img src="https://i.postimg.cc/vZ08x9HS/IMG-20260411-WA0004.jpg" class="hero-img" alt="Monoga Booth">
-    <div style="max-width: 800px; color: var(--mid-brown);">
-      <p>Monoga Photobooth merupakan layanan photobooth yang berbasis di Bali, terinspirasi dari kata Jepang <strong>“Monogatari”</strong> yang berarti cerita. Kami percaya bahwa setiap momen memiliki cerita yang layak untuk diabadikan.</p>
+  <section id="about" class="hero reveal active">
+    <h2 class="serif">Abadikan Cerita Anda</h2>
+    <div class="hero-slogan">Your story instantly captured</div>
+    <img src="https://i.postimg.cc/vZ08x9HS/IMG-20260411-WA0004.jpg" class="hero-img" alt="Monoga Booth Bali">
+    
+    <div class="philosophy">
+      <p>
+        Monoga Photobooth merupakan layanan photobooth yang berbasis di Bali, terinspirasi dari kata Jepang <strong>“Monogatari”</strong> yang berarti cerita. Kami percaya bahwa setiap momen memiliki cerita yang layak untuk diabadikan, mulai dari tawa, cinta, hingga kenangan yang hanya terjadi sekali seumur hidup. Dengan pendekatan modern, kami menggabungkan desain elegan, cetak instan, dan pembagian digital yang praktis untuk menciptakan pengalaman yang unik dan berkesan di setiap acara.
+      </p>
     </div>
   </section>
 
-  <section id="paket" class="reveal">
-    <h2 class="serif" style="font-size: 2.2rem;">Pilihan Paket Promo</h2>
+  <section id="template" class="template-section reveal">
+    <h2 class="serif section-title">Pilihan Template Frame</h2>
+    <div class="template-card">
+      <div class="template-image-container">
+        <img src="https://ibb.co.com/CKnN0W8Y" alt="Monoga Photobooth Templates" onerror="this.src='https://i.postimg.cc/vZ08x9HS/IMG-20260411-WA0004.jpg';">
+      </div>
+      <p style="margin-top: 20px; font-style: italic; color: var(--mid-brown);">
+        *Pilih dari berbagai desain eksklusif yang dapat disesuaikan dengan tema pernikahan, ulang tahun, atau acara korporat Anda.
+      </p>
+    </div>
+  </section>
+
+  <section id="paket" class="reveal" style="width:100%">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <h2 class="serif section-title">Special Promo 15% OFF</h2>
+    </div>
+
     <div class="pricing-grid">
       <div class="price-card">
         <h3 class="serif">QR Scan Only</h3>
+        <p class="package-desc">Digital Only, Tanpa Print</p>
         <table class="price-table">
-          <tr><td>3 Jam</td><td>1.190k</td></tr>
-          <tr><td>4 Jam</td><td>1.402.500</td></tr>
-          <tr><td>6 Jam</td><td>1.827.500</td></tr>
-          <tr><td>8 Jam</td><td>2.252k</td></tr>
+          <tr><td>3 Jam</td><td><span class="old-p">1.400k</span>1.190k</td></tr>
+          <tr><td>4 Jam</td><td><span class="old-p">1.650k</span>1.402.500</td></tr>
+          <tr><td>5 Jam</td><td><span class="old-p">1.900k</span>1.615.000</td></tr>
+          <tr><td>6 Jam</td><td><span class="old-p">2.150k</span>1.827.500</td></tr>
+          <tr><td>8 Jam</td><td><span class="old-p">2.650k</span>2.252k</td></tr>
+          <tr><td>10 Jam</td><td><span class="old-p">3.150k</span>2.677k</td></tr>
         </table>
+        <div class="mirror-note"><i class="fas fa-magic"></i> Sewa Welcome Mirror: <strong>250k</strong></div>
       </div>
+
       <div class="price-card" style="border: 2px solid var(--gold);">
         <h3 class="serif">QR & Print</h3>
+        <p class="package-desc">Cetak Terbatas + Digital</p>
         <table class="price-table">
-          <tr><td>100 Pcs / 4 Jam</td><td>1.615k</td></tr>
-          <tr><td>300 Pcs / 6 Jam</td><td>3.017k</td></tr>
-          <tr><td>500 Pcs / 8 Jam</td><td>4.080k</td></tr>
-          <tr><td>700 Pcs / 10 Jam</td><td>5.100k</td></tr>
+          <tr><td>100 Pcs / 4 Jam</td><td><span class="old-p">1.900k</span>1.615k</td></tr>
+          <tr><td>200 Pcs / 5 Jam</td><td><span class="old-p">2.700k</span>2.295k</td></tr>
+          <tr><td>300 Pcs / 6 Jam</td><td><span class="old-p">3.550k</span>3.017k</td></tr>
+          <tr><td>400 Pcs / 7 Jam</td><td><span class="old-p">4.200k</span>3.570k</td></tr>
+          <tr><td>500 Pcs / 8 Jam</td><td><span class="old-p">4.800k</span>4.080k</td></tr>
+          <tr><td>700 Pcs / 10 Jam</td><td><span class="old-p">6.000k</span>5.100k</td></tr>
         </table>
+        <div class="mirror-note"><i class="fas fa-magic"></i> Sewa Welcome Mirror: <strong>250k</strong></div>
       </div>
+
       <div class="price-card">
         <h3 class="serif">Unlimited</h3>
+        <p class="package-desc">Cetak Puas + Digital</p>
         <table class="price-table">
-          <tr><td>2 Jam</td><td>3.145k</td></tr>
-          <tr><td>4 Jam</td><td>4.335k</td></tr>
-          <tr><td>6 Jam</td><td>5.610k</td></tr>
-          <tr><td>8 Jam</td><td>6.800k</td></tr>
+          <tr><td>2 Jam</td><td><span class="old-p">3.700k</span>3.145k</td></tr>
+          <tr><td>3 Jam</td><td><span class="old-p">4.400k</span>3.740k</td></tr>
+          <tr><td>4 Jam</td><td><span class="old-p">5.100k</span>4.335k</td></tr>
+          <tr><td>6 Jam</td><td><span class="old-p">6.600k</span>5.610k</td></tr>
+          <tr><td>8 Jam</td><td><span class="old-p">8.000k</span>6.800k</td></tr>
         </table>
+        <div class="mirror-note"><i class="fas fa-star"></i> Free Mirror (Paket 4-8 Jam)</div>
       </div>
     </div>
   </section>
 
-  <section id="template" class="reveal">
-    <h2 class="serif" style="font-size: 2.2rem; margin-bottom: 30px;">Pilihan Template Frame</h2>
-    <div class="template-box">
-      <img src="https://ibb.co.com/CKnN0W8Y" class="template-img" alt="Frame Templates" onerror="this.src='https://i.postimg.cc/vZ08x9HS/IMG-20260411-WA0004.jpg';">
-      <p style="margin-top: 15px; font-size: 0.8rem; color: var(--mid-brown);">*Desain frame dapat disesuaikan dengan tema acara Anda</p>
+  <section id="fasilitas" class="facilities-section reveal">
+    <h3 class="serif">Apa saja yang di dapat dalam paket:</h3>
+    <div class="facilities-grid">
+      <div class="facility-item"><i class="fas fa-check-circle"></i> 1 Set Mesin Photobooth Modern</div>
+      <div class="facility-item"><i class="fas fa-check-circle"></i> 2 Operator Profesional & Ramah</div>
+      <div class="facility-item"><i class="fas fa-check-circle"></i> QR Code Instan (Scan & Share)</div>
+      <div class="facility-item"><i class="fas fa-check-circle"></i> Custom Desain Frame Digital</div>
+      <div class="facility-item"><i class="fas fa-check-circle"></i> Fitur Boomerang Video</div>
+      <div class="facility-item"><i class="fas fa-check-circle"></i> Animasi GIF Menarik</div>
+      <div class="facility-item"><i class="fas fa-check-circle"></i> Foto Cetak Premium (Paket Print)</div>
+      <div class="facility-item"><i class="fas fa-check-circle"></i> Frame Cetak Elegan</div>
+      <div class="facility-item"><i class="fas fa-check-circle"></i> Properti Seru (Fun Props)</div>
+      <div class="facility-item"><i class="fas fa-check-circle"></i> Studio Lighting Profesional</div>
+      <div class="facility-item"><i class="fas fa-check-circle"></i> Link Drive Semua File Original</div>
+      <div class="facility-item"><i class="fas fa-check-circle"></i> Transportasi (Dps & Gianyar)</div>
     </div>
   </section>
 
-  <section id="fasilitas" class="reveal">
-    <div class="facilities-box">
-      <h3 class="serif" style="font-size: 2rem;">Apa saja yang di dapat di dalam paket:</h3>
-      <div class="facilities-grid">
-        <div class="facility-item"><i class="fas fa-check-circle"></i> 1 set photobooth</div>
-        <div class="facility-item"><i class="fas fa-check-circle"></i> 2 operator profesional</div>
-        <div class="facility-item"><i class="fas fa-check-circle"></i> QR code sharing foto</div>
-        <div class="facility-item"><i class="fas fa-check-circle"></i> Desain frame digital custom</div>
-        <div class="facility-item"><i class="fas fa-check-circle"></i> Fitur boomerang & GIF</div>
-        <div class="facility-item"><i class="fas fa-check-circle"></i> Foto & Frame cetak (paket print)</div>
-        <div class="facility-item"><i class="fas fa-check-circle"></i> Aksesoris properti seru</div>
-        <div class="facility-item"><i class="fas fa-check-circle"></i> Pencahayaan tambahan</div>
-        <div class="facility-item"><i class="fas fa-check-circle"></i> Drive berisi file original</div>
-        <div class="facility-item"><i class="fas fa-check-circle"></i> Gratis transportasi (Dps & Gianyar)</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="order" class="reveal" style="background: var(--dark-brown); color: var(--cream); border-radius: 30px; padding: 60px 40px; margin: 40px 0;">
-    <h2 class="serif" style="font-size: 2.5rem; color: var(--white);">Konfirmasi Booking</h2>
-    <div style="background: var(--gold); color: var(--dark-brown); padding: 10px 25px; border-radius: 50px; display: inline-block; font-weight: 800; margin: 20px 0;">DP MINIMAL 50%</div>
+  <section id="order" class="order-box reveal">
+    <h2 class="serif" style="font-size: 3rem;">Konfirmasi Booking</h2>
+    <div class="dp-badge"><i class="fas fa-lock"></i> DP MINIMAL 50%</div>
+    <p style="font-size: 1.1rem; opacity: 0.8; max-width: 600px; margin: 0 auto;">
+      Pembayaran Down Payment (DP) diperlukan untuk mengamankan slot tanggal dan waktu acara Anda.
+    </p>
     <div class="bank-grid">
       <div class="bank-item">
-        <div style="color: var(--gold); font-weight: 700;">BCA</div>
-        <div style="font-size: 1.4rem; font-weight: 700;">7730691801</div>
-        <div style="font-size: 0.8rem;">a.n Ni Kadek Dwi Wahyuni</div>
+        <small>BCA TRANSFER</small>
+        <p class="acc-number">7730691801</p>
+        <p>a.n Ni Kadek Dwi Wahyuni</p>
       </div>
       <div class="bank-item">
-        <div style="color: var(--gold); font-weight: 700;">BRI</div>
-        <div style="font-size: 1.4rem; font-weight: 700;">024801014999530</div>
-        <div style="font-size: 0.8rem;">a.n Putu Dimas Sanjaya</div>
+        <small>BRI TRANSFER</small>
+        <p class="acc-number">024801014999530</p>
+        <p>a.n Putu Dimas Sanjaya</p>
       </div>
     </div>
   </section>
 </main>
 
-<footer style="padding: 40px 0; opacity: 0.6; font-size: 0.8rem;">
-  © 2026 MONOGA PHOTOBOOTH BALI
+<footer style="padding: 60px 0; text-align: center; opacity: 0.6; font-size: 0.85rem; border-top: 1px solid rgba(0,0,0,0.05);">
+  <div class="logo-main" style="font-size: 1.2rem; letter-spacing: 5px; margin-bottom: 10px;">Monoga<span class="logo-highlight">Bali</span></div>
+  © 2026 MONOGA PHOTOBOOTH | Your story instantly captured.
 </footer>
 
 <script>
+  // Advanced Flower Generator for Visual Richness
+  const flowerArea = document.getElementById('flower-area');
+  const icons = ['fa-spa', 'fa-seedling', 'fa-leaf'];
+  
   function createFlower() {
     const flower = document.createElement('i');
-    flower.classList.add('fas', 'fa-spa', 'frangipani');
+    const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+    
+    flower.classList.add('fas', randomIcon, 'frangipani');
     flower.style.left = Math.random() * 100 + 'vw';
-    flower.style.animationDuration = Math.random() * 3 + 5 + 's';
-    flower.style.fontSize = Math.random() * 10 + 15 + 'px';
-    document.getElementById('flower-area').appendChild(flower);
-    setTimeout(() => flower.remove(), 8000);
+    
+    const duration = Math.random() * 4 + 6 + 's';
+    flower.style.animationDuration = duration;
+    flower.style.fontSize = Math.random() * 15 + 15 + 'px';
+    flower.style.opacity = Math.random() * 0.5 + 0.2;
+    
+    flowerArea.appendChild(flower);
+    
+    setTimeout(() => { flower.remove(); }, 10000);
   }
-  setInterval(createFlower, 1500);
 
+  // Frequency adjusted for elegance
+  setInterval(createFlower, 1200);
+
+  // Smooth Reveal Intersection Observer
+  const observerOptions = { threshold: 0.15 };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('active');
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
     });
-  }, { threshold: 0.1 });
+  }, observerOptions);
+
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Anti-glitch Smooth Scroll
+  document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 50,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
 </script>
 
 </body>
