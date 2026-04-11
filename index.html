@@ -9,9 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
+  
+  <style>
     :root {
-      /* === WARNA TEMA COKLAT MUDA & COKLAT TUA === */
+      /* === WARNA DIUBAH KE TEMA COKLAT MUDA & COKLAT TUA === */
       --cream: #f5ebe0;           /* coklat muda */
       --soft-nude: #e8d9cc;        /* coklat muda lebih soft */
       --gold: #a0714b;             /* coklat keemasan */
@@ -38,6 +39,7 @@
       font-weight: 700; /* === SEMUA TULISAN BOLD === */
     }
 
+    /* === CANVAS UNTUK ANIMASI BACKGROUND (TAMBAHAN) === */
     #falling-elements-canvas {
       position: fixed;
       top: 0;
@@ -48,6 +50,7 @@
       z-index: 1;
     }
 
+    /* Semua konten utama diberi z-index lebih tinggi agar berada di atas canvas */
     header, main, footer, .wa-fixed {
       position: relative;
       z-index: 2;
@@ -55,14 +58,15 @@
 
     h1, h2, h3, h4, .serif { 
       font-family: 'Cormorant Garamond', serif; 
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
     }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
     .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
     .reveal.active { opacity: 1; transform: translateY(0); }
-          /* --- HEADER --- */
+
+    /* --- HEADER --- */
     header {
       padding: 40px 0;
       text-align: center;
@@ -85,7 +89,7 @@
       color: var(--mid-brown);
       text-transform: uppercase;
       margin-top: 10px;
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
     }
 
     nav {
@@ -111,7 +115,8 @@
     }
 
     nav a:hover { color: var(--gold); }
-          /* --- BUTTONS --- */
+
+    /* --- BUTTONS --- */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -121,7 +126,7 @@
       color: var(--white);
       text-decoration: none;
       border-radius: 50px;
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
       font-size: 0.9rem;
       transition: var(--transition);
       box-shadow: 0 10px 20px rgba(160, 113, 75, 0.25);
@@ -139,7 +144,7 @@
       border: 2px solid var(--gold);
       color: var(--dark-brown);
       box-shadow: none;
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
     }
 
     /* --- HERO/ABOUT --- */
@@ -170,7 +175,8 @@
       display: block;
       filter: drop-shadow(0 5px 15px rgba(74, 53, 32, 0.1));
     }
-          /* --- PRICING --- */
+
+    /* --- PRICING --- */
     .section-header { text-align: center; margin-bottom: 60px; }
     .section-header span { 
       color: var(--gold); 
@@ -182,7 +188,7 @@
     .section-header h2 { 
       font-size: clamp(2.5rem, 5vw, 3.5rem); 
       margin-top: 10px; 
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
     }
 
     .pricing-grid {
@@ -216,26 +222,31 @@
       font-size: 2rem; 
       margin-bottom: 25px; 
       line-height: 1.1; 
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
     }
     
-    .price-card h3 span { font-weight: 700; }
+    .price-card h3 span {
+      font-weight: 700; /* === BOLD === */
+    }
     
     .price-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
     .price-table td { 
       padding: 10px 0; 
       border-bottom: 1px solid #f0e4d8; 
       font-size: 0.85rem; 
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
     }
-    .price-table td:last-child { text-align: right; font-weight: 700; }
+    .price-table td:last-child { 
+      text-align: right; 
+      font-weight: 700; 
+    }
     
     .old-p { 
       text-decoration: line-through; 
       color: var(--mid-brown); 
       font-size: 0.75rem; 
       margin-right: 8px; 
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
       opacity: 0.6; 
     }
 
@@ -245,20 +256,32 @@
       padding: 18px;
       border-radius: 15px;
       line-height: 1.6;
+      font-weight: 700; /* === BOLD === */
+    }
+    .extra-info-box strong { 
+      color: var(--dark-brown); 
       font-weight: 700;
     }
-    .extra-info-box strong { color: var(--dark-brown); font-weight: 700; }
     .info-line { 
       display: flex; 
       align-items: flex-start; 
       gap: 8px; 
       margin-bottom: 8px; 
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
     }
     .info-line:last-child { margin-bottom: 0; }
-    .info-line i { color: var(--gold); margin-top: 4px; font-size: 0.9rem; }
-    .text-free { color: #4a7c3f; font-weight: 800; text-transform: uppercase; }
-          /* --- INCLUDES --- */
+    .info-line i { 
+      color: var(--gold); 
+      margin-top: 4px; 
+      font-size: 0.9rem; 
+    }
+    .text-free { 
+      color: #4a7c3f; 
+      font-weight: 800; 
+      text-transform: uppercase; 
+    }
+
+    /* --- INCLUDES --- */
     .include-section {
       background: var(--soft-nude);
       padding: 80px 40px;
@@ -277,7 +300,7 @@
       align-items: center;
       gap: 15px;
       font-size: 0.95rem;
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
     }
 
     .include-item i {
@@ -286,7 +309,7 @@
       color: var(--gold); font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03);
     }
 
-    /* === TEMPLATE SECTION === */
+    /* === TEMPLATE SECTION (TAMBAHAN) === */
     .template-section {
       padding: 80px 0;
       margin: 60px 0;
@@ -326,7 +349,8 @@
       color: var(--gold);
       margin-right: 8px;
     }
-          /* --- PAYMENT/ORDER SECTION --- */
+
+    /* --- PAYMENT/ORDER SECTION --- */
     .order-container {
       background: var(--dark-brown);
       color: var(--cream);
@@ -345,9 +369,17 @@
       gap: 25px;
     }
     
-    .order-content-text h2 { font-weight: 700; }
-    .order-content-text p { font-weight: 700; }
-    .order-content-text p span { font-weight: 700; }
+    .order-content-text h2 {
+      font-weight: 700; /* === BOLD === */
+    }
+    
+    .order-content-text p {
+      font-weight: 700; /* === BOLD === */
+    }
+    
+    .order-content-text p span {
+      font-weight: 700; /* === BOLD === */
+    }
 
     .bank-wrapper { display: flex; flex-direction: column; gap: 20px; }
     
@@ -364,7 +396,7 @@
       text-transform: uppercase; 
       letter-spacing: 2px; 
       margin-bottom: 5px; 
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
     }
     .bank-card strong { 
       font-size: 1.4rem; 
@@ -377,7 +409,7 @@
       opacity: 0.8; 
       margin-top: 5px; 
       display: block; 
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
     }
 
     /* --- FOOTER --- */
@@ -388,8 +420,13 @@
       border-top: 1px solid rgba(0,0,0,0.05); 
     }
     
-    footer h2 { font-weight: 700; }
-    footer p { font-weight: 700; }
+    footer h2 {
+      font-weight: 700; /* === BOLD === */
+    }
+    
+    footer p {
+      font-weight: 700; /* === BOLD === */
+    }
     
     .footer-links {
       display: flex; 
@@ -403,7 +440,7 @@
       display: flex; 
       align-items: center; 
       gap: 10px; 
-      font-weight: 700;
+      font-weight: 700; /* === BOLD === */
       transition: var(--transition);
     }
     .footer-links a:hover { 
@@ -420,9 +457,18 @@
       transition: var(--transition);
     }
 
-    p { font-weight: 700; }
-    strong { font-weight: 800; }
-    span { font-weight: 700; }
+    /* === PARAGRAF DAN TEKS UMUM === */
+    p {
+      font-weight: 700; /* === BOLD === */
+    }
+    
+    strong {
+      font-weight: 800; /* === EXTRA BOLD === */
+    }
+    
+    span {
+      font-weight: 700; /* === BOLD === */
+    }
 
     @media (max-width: 992px) {
       .hero-section { grid-template-columns: 1fr; text-align: center; gap: 40px; padding: 60px 0; }
@@ -456,7 +502,8 @@
 </header>
 
 <main class="container">
-    <section id="about" class="hero-section reveal active">
+  
+  <section id="about" class="hero-section reveal active">
     <div class="order-content-text"> 
       <h2 class="serif" style="font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.1;">
         Abadikan Cerita Anda <br><span style="color: var(--gold); font-style: italic;">Your story instantly captured.</span>
@@ -472,8 +519,9 @@
     <div class="hero-image-frame reveal active">
       <img src="https://i.postimg.cc/vZ08x9HS/IMG-20260411-WA0004.jpg" alt="Monoga Logo" class="hero-logo-img">
     </div>
-    </section>
-      <section id="paket" class="reveal">
+  </section>
+
+  <section id="paket" class="reveal">
     <div class="section-header">
       <span>Special Potongan Harga 15%</span>
       <h2 class="serif">Pilih Paket Kebahagiaanmu</h2>
@@ -483,7 +531,6 @@
     </div>
 
     <div class="pricing-grid">
-      <!-- Paket 1: QR Scan Only -->
       <div class="price-card">
         <span class="badge-promo">-15% OFF</span>
         <i class="fas fa-qrcode" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;"></i>
@@ -511,7 +558,7 @@
             </div>
         </div>
       </div>
-            <!-- Paket 2: QR & Print (Best Seller) -->
+
       <div class="price-card" style="border: 2px solid var(--gold);">
         <span class="badge-promo" style="background: var(--dark-brown);">Best Seller</span>
         <i class="fas fa-print" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;"></i>
@@ -537,7 +584,7 @@
             </div>
         </div>
       </div>
-            <!-- Paket 3: Unlimited -->
+
       <div class="price-card">
         <span class="badge-promo">-15% OFF</span>
         <i class="fas fa-infinity" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;"></i>
@@ -566,8 +613,9 @@
         </div>
       </div>
     </div>
-      </section>
-        <section id="fasilitas" class="include-section reveal">
+  </section>
+
+  <section id="fasilitas" class="include-section reveal">
     <div class="section-header">
         <span>Full Experience</span>
         <h2 class="serif">Fasilitas Yang Didapat</h2>
@@ -576,6 +624,7 @@
       <div class="include-item"><i class="fas fa-camera"></i> 1 set photobooth</div>
       <div class="include-item"><i class="fas fa-users"></i> 2 operator profesional</div>
       <div class="include-item"><i class="fas fa-qrcode"></i> QR code untuk sharing foto</div>
+      <div class="include-item"><i class="fas fa-paint-brush"></i> QR code untuk sharing foto</div>
       <div class="include-item"><i class="fas fa-paint-brush"></i> Desain frame digital custom</div>
       <div class="include-item"><i class="fas fa-play"></i> Fitur boomerang</div>
       <div class="include-item"><i class="fas fa-film"></i> Animasi GIF</div>
@@ -586,8 +635,9 @@
       <div class="include-item"><i class="fas fa-cloud-upload-alt"></i> Drive berisi semua file original</div>
       <div class="include-item"><i class="fas fa-car"></i> Gratis transportasi area Denpasar dan Gianyar</div>
     </div>
-        </section>
-          <!-- === TEMPLATE SECTION === -->
+  </section>
+
+  <!-- === TEMPLATE SECTION (TAMBAHAN) === -->
   <section id="template" class="template-section reveal">
     <div class="section-header">
         <span>Pilihan Desain</span>
@@ -609,7 +659,8 @@
         </div>
     </div>
   </section>
-    <section id="order" class="reveal">
+
+  <section id="order" class="reveal">
     <div class="order-container">
       <div class="order-content-text">
         <h2 class="serif" style="font-size: clamp(2.5rem, 4vw, 3rem);">Ready to Start Your Story?</h2>
@@ -637,6 +688,9 @@
       </div>
     </div>
   </section>
+
+</main>
+
 <footer>
   <div class="container">
     <h2 class="serif" style="font-size: 2.2rem; letter-spacing: 5px; color: var(--dark-brown);">MONOGA PHOTOBOOTH</h2>
@@ -656,7 +710,8 @@
     </p>
   </div>
 </footer>
-  <script>
+
+<script>
   // === KODE ANIMASI BACKGROUND (HANYA 🍂 DAN 🍁 - SISTEMATIS & TIDAK TEBAL) ===
   (function() {
     const canvas = document.getElementById('falling-elements-canvas');
@@ -772,5 +827,3 @@
 
 </body>
 </html>
-
-</main>
