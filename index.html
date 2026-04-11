@@ -50,7 +50,19 @@
       background: linear-gradient(to bottom, var(--soft-nude), transparent);
     }
 
-    .logo-container { margin-bottom: 25px; }
+    .logo-container { 
+      margin-bottom: 25px; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-img {
+      max-width: 150px; /* Ukuran disesuaikan agar tidak terpotong */
+      height: auto;
+      margin-bottom: 15px;
+    }
+
     .logo-main {
       font-size: clamp(2.2rem, 6vw, 3.5rem);
       font-weight: 700;
@@ -193,7 +205,6 @@
     
     .old-p { text-decoration: line-through; color: var(--mid-brown); font-size: 0.75rem; margin-right: 8px; font-weight: 400; opacity: 0.6; }
 
-    /* Extra Info Styling */
     .extra-info-box {
       margin-top: auto;
       font-size: 0.85rem;
@@ -261,7 +272,16 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 30px; border-radius: 25px;
       backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
     }
+
+    .bank-logo {
+      height: 25px;
+      margin-bottom: 15px;
+      filter: brightness(0) invert(1); /* Membuat logo putih agar elegan di background gelap */
+    }
+
     .bank-card p { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
     .bank-card strong { font-size: 1.4rem; letter-spacing: 2px; font-family: monospace; }
     .bank-card small { font-size: 0.85rem; opacity: 0.8; margin-top: 5px; display: block; }
@@ -301,6 +321,7 @@
 <header>
   <div class="container">
     <div class="logo-container">
+      <img src="logo-monoga.png" alt="Monoga Logo" class="logo-img">
       <div class="logo-main">MONOGA <i class="fas fa-camera-retro"></i></div>
       <div class="logo-sub">Your story instantly captured</div>
     </div>
@@ -458,11 +479,13 @@
       </div>
       <div class="bank-wrapper">
         <div class="bank-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA Logo" class="bank-logo">
           <p>BCA Account</p>
           <strong>7730691801</strong><br>
           <small>a.n Ni Kadek Dwi Wahyuni</small>
         </div>
         <div class="bank-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/BRI_Logo.svg" alt="BRI Logo" class="bank-logo">
           <p>BRI Account</p>
           <strong>024801014999530</strong><br>
           <small>a.n Putu Dimas Sanjaya</small>
@@ -505,7 +528,8 @@
 
   revealElements.forEach(el => observer.observe(el));
 
-  document.querySelectorAll('nav a').forEach(anchor => {
+  document.querySelectorAll('nav
+                            a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       document.querySelector(this.getAttribute('href')).scrollIntoView({
