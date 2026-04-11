@@ -15,304 +15,63 @@
       --cream: #fdf8f2;
       --soft-nude: #f4ebe3;
       --gold: #c9a96b;
-      --gold-dark: #b08d4f;
       --dark-brown: #3e2e24;
       --mid-brown: #7a6354;
       --white: #ffffff;
-      --glass: rgba(255, 255, 255, 0.8);
       --shadow: 0 20px 40px rgba(62, 46, 36, 0.1);
       --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background-color: var(--cream);
-      color: var(--dark-brown);
-      font-family: 'Montserrat', sans-serif;
-      line-height: 1.7;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-
+    body { background-color: var(--cream); color: var(--dark-brown); font-family: 'Montserrat', sans-serif; line-height: 1.7; overflow-x: hidden; scroll-behavior: smooth; }
     h1, h2, h3, h4, .serif { font-family: 'Cormorant Garamond', serif; }
-
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    /* --- ANIMASI --- */
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    header { padding: 40px 0; text-align: center; background: linear-gradient(to bottom, var(--soft-nude), transparent); }
+    .logo-main { font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: 10px; text-transform: uppercase; color: var(--dark-brown); }
+    .logo-sub { font-size: 0.85rem; letter-spacing: 5px; color: var(--mid-brown); text-transform: uppercase; margin-top: 10px; }
 
-    .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
-    .reveal.active { opacity: 1; transform: translateY(0); }
-
-    /* --- HEADER --- */
-    header {
-      padding: 40px 0;
-      text-align: center;
-      background: linear-gradient(to bottom, var(--soft-nude), transparent);
-    }
-
-    .logo-container { margin-bottom: 25px; }
-    .logo-main {
-      font-size: clamp(2.2rem, 6vw, 3.5rem);
-      font-weight: 700;
-      letter-spacing: 10px;
-      text-transform: uppercase;
-      color: var(--dark-brown);
-      position: relative;
-    }
-    .logo-main i { color: var(--gold); font-size: 0.8em; vertical-align: middle; }
-    .logo-sub {
-      font-size: 0.85rem;
-      letter-spacing: 5px;
-      color: var(--mid-brown);
-      text-transform: uppercase;
-      margin-top: 10px;
-      font-weight: 400;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 35px;
-      margin-top: 30px;
-      padding: 15px 0;
-      border-top: 1px solid rgba(165, 131, 110, 0.2);
-      border-bottom: 1px solid rgba(165, 131, 110, 0.2);
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--dark-brown);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: var(--transition);
-      position: relative;
-    }
-
-    nav a::after {
-      content: ''; width: 0; height: 1.5px; background: var(--gold);
-      position: absolute; bottom: -5px; left: 0; transition: var(--transition);
-    }
-    nav a:hover::after { width: 100%; }
+    nav { display: flex; justify-content: center; gap: 35px; margin-top: 30px; padding: 15px 0; border-top: 1px solid rgba(165, 131, 110, 0.2); border-bottom: 1px solid rgba(165, 131, 110, 0.2); }
+    nav a { text-decoration: none; color: var(--dark-brown); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
     nav a:hover { color: var(--gold); }
 
-    /* --- BUTTONS --- */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 38px;
-      background: var(--gold);
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: var(--transition);
-      box-shadow: 0 10px 20px rgba(201, 169, 107, 0.2);
-      border: none;
-      cursor: pointer;
-    }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 38px; background: var(--gold); color: var(--white); text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: var(--transition); box-shadow: 0 10px 20px rgba(201, 169, 107, 0.2); border: none; }
+    .btn:hover { background: var(--dark-brown); transform: translateY(-5px); }
 
-    .btn:hover {
-      background: var(--dark-brown);
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(62, 46, 36, 0.2);
-    }
+    .hero-section { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; padding: 100px 0; }
+    .hero-image-frame { width: 300px; height: 420px; margin: 0 auto; background: var(--soft-nude); border-radius: 150px 150px 20px 20px; border: 10px solid var(--white); box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; }
+    .hero-image-frame::before { content: '\f030'; font-family: 'Font Awesome 5 Free'; font-weight: 900; font-size: 5rem; color: var(--white); opacity: 0.3; }
 
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--gold);
-      color: var(--dark-brown);
-      box-shadow: none;
-    }
-
-    /* --- HERO/ABOUT --- */
-    .hero-section {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 60px;
-      align-items: center;
-      padding: 100px 0;
-    }
-
-    .hero-image-frame {
-      position: relative;
-      width: 300px;
-      height: 420px;
-      margin: 0 auto;
-      background: var(--light-brown);
-      border-radius: 150px 150px 20px 20px;
-      border: 10px solid var(--white);
-      box-shadow: var(--shadow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .hero-image-frame::before {
-      content: '\f030';
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      font-size: 5rem;
-      color: var(--white);
-      opacity: 0.3;
-    }
-
-    /* --- PRICING --- */
     .section-header { text-align: center; margin-bottom: 60px; }
     .section-header span { color: var(--gold); font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; }
     .section-header h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-top: 10px; }
 
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 30px;
-    }
-
-    .price-card {
-      background: var(--white);
-      padding: 50px 40px;
-      border-radius: 30px;
-      border: 1px solid rgba(201, 169, 107, 0.1);
-      transition: var(--transition);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    .price-card { background: var(--white); padding: 50px 30px; border-radius: 30px; border: 1px solid rgba(201, 169, 107, 0.1); transition: var(--transition); position: relative; display: flex; flex-direction: column; }
     .price-card:hover { transform: translateY(-15px); border-color: var(--gold); box-shadow: var(--shadow); }
+    .badge-promo { position: absolute; top: 25px; right: 25px; background: var(--gold); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
 
-    .badge-promo {
-      position: absolute; top: 25px; right: 25px;
-      background: var(--gold); color: white;
-      padding: 5px 15px; border-radius: 20px;
-      font-size: 0.75rem; font-weight: 700;
-    }
-
-    .price-card h3 { font-size: 2rem; margin-bottom: 25px; line-height: 1.1; }
     .price-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
-    .price-table td { padding: 12px 0; border-bottom: 1px solid #f5eee6; font-size: 0.95rem; }
+    .price-table td { padding: 10px 0; border-bottom: 1px solid #f5eee6; font-size: 0.85rem; }
     .price-table td:last-child { text-align: right; font-weight: 700; }
-    
-    .old-p { text-decoration: line-through; color: var(--mid-brown); font-size: 0.8rem; margin-right: 8px; font-weight: 400; }
+    .old-p { text-decoration: line-through; color: var(--mid-brown); font-size: 0.75rem; margin-right: 5px; opacity: 0.6; }
 
-    /* --- INCLUDES --- */
-    .include-section {
-      background: var(--soft-nude);
-      padding: 80px 40px;
-      border-radius: 50px;
-      margin: 60px 0;
-    }
+    .include-section { background: var(--soft-nude); padding: 80px 40px; border-radius: 50px; margin: 60px 0; }
+    .include-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .include-item { display: flex; align-items: center; gap: 15px; font-size: 0.9rem; font-weight: 500; }
+    .include-item i { width: 35px; height: 35px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); }
 
-    .include-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
+    .order-container { background: var(--dark-brown); color: var(--cream); padding: 60px; border-radius: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 60px; }
+    .bank-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 20px; margin-bottom: 15px; }
+    .bank-card p { font-size: 0.75rem; color: var(--gold); letter-spacing: 1px; margin-bottom: 5px; }
+    .bank-card strong { font-size: 1.3rem; letter-spacing: 2px; font-family: monospace; }
 
-    .include-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
+    .wa-fixed { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-    .include-item i {
-      width: 35px; height: 35px; background: var(--white);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      color: var(--gold); font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-    }
-
-    /* --- PAYMENT/ORDER SECTION --- */
-    .order-container {
-      background: var(--dark-brown);
-      color: var(--cream);
-      padding: 80px 60px;
-      border-radius: 50px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      margin-bottom: 60px; /* Jarak ke footer */
-    }
-
-    .order-content-text {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-
-    .bank-wrapper { display: flex; flex-direction: column; gap: 20px; }
-    
-    .bank-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 30px; border-radius: 25px;
-      backdrop-filter: blur(10px);
-    }
-    .bank-card p { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
-    .bank-card strong { font-size: 1.4rem; letter-spacing: 2px; font-family: monospace; }
-    .bank-card small { font-size: 0.85rem; opacity: 0.8; margin-top: 5px; display: block; }
-
-    /* --- FOOTER --- */
-    footer { padding: 80px 0 50px; text-align: center; background: var(--white); border-top: 1px solid rgba(0,0,0,0.05); }
-    .footer-links {
-      display: flex; justify-content: center; gap: 40px; margin: 40px 0;
-    }
-    .footer-links a {
-      text-decoration: none; color: var(--dark-brown);
-      display: flex; align-items: center; gap: 10px; font-weight: 600;
-      transition: var(--transition);
-    }
-    .footer-links a:hover { color: var(--gold); transform: translateY(-3px); }
-
-    /* --- FLOATING WA ICON (The Bottom Right One) --- */
-    .wa-fixed {
-      position: fixed; bottom: 40px; right: 40px;
-      width: 65px; height: 65px; background: #25D366;
-      color: white; border-radius: 50%; display: flex;
-      align-items: center; justify-content: center;
-      font-size: 32px; z-index: 1000; box-shadow: 0 15px 30px rgba(37,211,102,0.3);
-      transition: var(--transition);
-    }
-    .wa-fixed:hover { transform: scale(1.1) rotate(10deg); }
-
-    /* --- RESPONSIVE MOBILE FIX --- */
     @media (max-width: 992px) {
-      /* Hero/About Fix */
-      .hero-section { grid-template-columns: 1fr; text-align: center; gap: 40px; padding: 60px 0; }
-      .hero-image-frame { margin-top: 0; width: 280px; height: 380px; }
-      .hero-section .btn { width: 100%; max-width: 300px; margin: 0 auto; }
-      
-      /* Pricing Card Fix on Mobile */
-      .price-card { padding: 40px 25px; }
-      .pricing-grid { grid-template-columns: 1fr; gap: 20px; }
-
-      /* Order Section Fix (CRITICAL) */
-      .order-container { 
-        grid-template-columns: 1fr; /* Jadi satu kolom lurus ke bawah */
-        text-align: center; 
-        padding: 50px 30px; /* Beri padding pas di HP agar tidak mepet */
-        gap: 40px; 
-      }
-      .order-content-text { gap: 20px; align-items: center; } /* Ketengahkan isinya */
-      .order-content-text .btn { width: 100%; max-width: 350px; } /* Tombol lebar lurus di HP */
-      
-      .bank-card { padding: 25px; } /* Sedikit kurangi padding bank card */
-      .bank-card strong { font-size: 1.2rem; } /* Kecilkan font nomor bank agar tidak kepotong */
-
-      /* Footer Fix */
-      .footer-links { flex-direction: column; gap: 20px; align-items: center; }
-      
-      /* Floating WA icon smaller on mobile */
-      .wa-fixed { width: 55px; height: 55px; font-size: 28px; bottom: 25px; right: 25px; }
+      .hero-section, .order-container { grid-template-columns: 1fr; text-align: center; }
+      .order-container { padding: 40px 20px; }
+      nav { gap: 15px; flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -322,13 +81,11 @@
 
 <header>
   <div class="container">
-    <div class="logo-container">
-      <div class="logo-main">MONOGA <i class="fas fa-camera-retro"></i></div>
-      <div class="logo-sub">Your story instantly captured</div>
-    </div>
+    <div class="logo-main">MONOGA <i class="fas fa-camera-retro"></i></div>
+    <div class="logo-sub">Your story instantly captured</div>
     <nav>
-      <a href="#about">Tentang Kami</a>
-      <a href="#paket">Paket Harga</a>
+      <a href="#about">Tentang</a>
+      <a href="#paket">Harga</a>
       <a href="#fasilitas">Fasilitas</a>
       <a href="#order">Booking</a>
     </nav>
@@ -337,165 +94,119 @@
 
 <main class="container">
   
-  <section id="about" class="hero-section reveal active">
-    <div class="order-content-text"> <h2 class="serif" style="font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.1;">
-        Abadikan Cerita Anda <br><span style="color: var(--gold); font-style: italic;">Seketika Tercetak.</span>
+  <section id="about" class="hero-section">
+    <div>
+      <h2 class="serif" style="font-size: 3rem; line-height: 1.1;">
+        Abadikan Cerita Anda <br><span style="color: var(--gold); font-style: italic;">Your story instantly captured.</span>
       </h2>
-      <p style="font-size: 1.1rem; font-weight: 300; color: var(--mid-brown);">
-        Berasal dari kata <strong>"Monogatari"</strong> (Cerita), kami percaya setiap tawa dan pelukan di acara Anda adalah kisah yang berharga. Monoga Photobooth Bali hadir dengan teknologi cetak instan kualitas lab untuk memastikan kenangan Anda tidak hanya tersimpan di memori, tapi juga di genggaman.
+      <p style="margin: 25px 0; font-weight: 300;">
+        [span_0](start_span)Terinspirasi dari kata Jepang <strong>"Monogatari"</strong>[span_0](end_span)[span_1](start_span), kami percaya setiap momen memiliki cerita yang layak diabadikan[span_1](end_span). [span_2](start_span)Kami menggabungkan desain elegan dan cetak instan untuk pengalaman unik di setiap acara[span_2](end_span).
       </p>
-      <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: inherit;">
-        <a href="#paket" class="btn">Lihat Paket Promo</a>
-        <a href="https://wa.me/6281927310298" class="btn btn-outline" target="_blank">Konsultasi Jadwal</a>
-      </div>
+      <a href="#paket" class="btn">Lihat Paket</a>
     </div>
-    <div class="hero-image-frame reveal active"></div>
+    <div class="hero-image-frame"></div>
   </section>
 
-  <section id="paket" class="reveal">
+  <section id="paket">
     <div class="section-header">
-      <span>Special Potongan Harga 15%</span>
-      <h2 class="serif">Pilih Paket Kebahagiaanmu</h2>
+      [span_3](start_span)<span>Special Potongan Harga 15%[span_3](end_span)</span>
+      <h2 class="serif">Daftar Paket Harga</h2>
     </div>
 
     <div class="pricing-grid">
       <div class="price-card">
-        <span class="badge-promo">-15% OFF</span>
-        <i class="fas fa-qrcode" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;"></i>
-        <h3 class="serif">QR Scan Only <br><span style="font-size: 1rem; font-family: 'Montserrat'; font-weight: 400; color: var(--mid-brown);">Digital Only, Tanpa Print</span></h3>
+        <span class="badge-promo">-15%</span>
+        [span_4](start_span)<h3 class="serif" style="font-size: 1.8rem;">QR Scan Only[span_4](end_span)</h3>
+        <p style="font-size: 0.8rem; margin-bottom: 20px; opacity: 0.7;">Digital Only, Tanpa Print</p>
         <table class="price-table">
           <tr><td>3 Jam</td><td><span class="old-p">1.400k</span>1.190k</td></tr>
+          <tr><td>4 Jam</td><td><span class="old-p">1.650k</span>1.402k</td></tr>
           <tr><td>5 Jam</td><td><span class="old-p">1.900k</span>1.615k</td></tr>
+          <tr><td>6 Jam</td><td><span class="old-p">2.150k</span>1.827k</td></tr>
           <tr><td>8 Jam</td><td><span class="old-p">2.650k</span>2.252k</td></tr>
           <tr><td>10 Jam</td><td><span class="old-p">3.150k</span>2.677k</td></tr>
         </table>
-        <div style="margin-top: auto; font-size: 0.85rem; padding: 15px; background: var(--soft-nude); border-radius: 15px;">
-            <i class="fas fa-info-circle"></i> +1 Jam QR: 400k <br>
-            🎁 <strong>Free welcome mirror</strong> (7-10 jam)
+        <div style="font-size: 0.75rem; background: var(--soft-nude); padding: 10px; border-radius: 10px;">
+          [span_5](start_span)🎁 Free Welcome Mirror (7-10 Jam)[span_5](end_span)
         </div>
       </div>
 
-      <div class="price-card" style="border: 2px solid var(--gold);">
-        <span class="badge-promo" style="background: var(--dark-brown);">Best Seller</span>
-        <i class="fas fa-print" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;"></i>
-        <h3 class="serif">QR & Print <br><span style="font-size: 1rem; font-family: 'Montserrat'; font-weight: 400; color: var(--mid-brown);">Quota Cetak Terbatas</span></h3>
+      <div class="price-card" style="border-color: var(--gold);">
+        <span class="badge-promo">Terpopuler</span>
+        [span_6](start_span)<h3 class="serif" style="font-size: 1.8rem;">QR & Print[span_6](end_span)</h3>
+        <p style="font-size: 0.8rem; margin-bottom: 20px; opacity: 0.7;">Kuota Cetak Terbatas</p>
         <table class="price-table">
           <tr><td>100 Pcs / 4 Jam</td><td><span class="old-p">1.900k</span>1.615k</td></tr>
           <tr><td>300 Pcs / 6 Jam</td><td><span class="old-p">3.550k</span>3.017k</td></tr>
           <tr><td>500 Pcs / 8 Jam</td><td><span class="old-p">4.800k</span>4.080k</td></tr>
           <tr><td>700 Pcs / 10 Jam</td><td><span class="old-p">6.000k</span>5.100k</td></tr>
         </table>
-        <div style="margin-top: auto; font-size: 0.85rem; padding: 15px; background: #fdf2e9; border-radius: 15px;">
-            <i class="fas fa-plus"></i> Extra Print: 15k/lembar <br>
-            🎁 <strong>Free welcome mirror</strong> (6-10 jam)
+        <div style="font-size: 0.75rem; background: var(--soft-nude); padding: 10px; border-radius: 10px;">
+          [span_7](start_span)🎁 Free Welcome Mirror (6-10 Jam)[span_7](end_span)<br>
+          [span_8](start_span)Extra Print: 15k/lembar[span_8](end_span)
         </div>
       </div>
 
       <div class="price-card">
-        <span class="badge-promo">-15% OFF</span>
-        <i class="fas fa-infinity" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;"></i>
-        <h3 class="serif">Unlimited <br><span style="font-size: 1rem; font-family: 'Montserrat'; font-weight: 400; color: var(--mid-brown);">Digital + Cetak Puas</span></h3>
+        <span class="badge-promo">-15%</span>
+        [span_9](start_span)<h3 class="serif" style="font-size: 1.8rem;">Unlimited[span_9](end_span)</h3>
+        <p style="font-size: 0.8rem; margin-bottom: 20px; opacity: 0.7;">Digital + Cetak Puas</p>
         <table class="price-table">
           <tr><td>2 Jam</td><td><span class="old-p">3.700k</span>3.145k</td></tr>
           <tr><td>4 Jam</td><td><span class="old-p">5.100k</span>4.335k</td></tr>
           <tr><td>6 Jam</td><td><span class="old-p">6.600k</span>5.610k</td></tr>
           <tr><td>8 Jam</td><td><span class="old-p">8.000k</span>6.800k</td></tr>
         </table>
-        <div style="margin-top: auto; font-size: 0.85rem; padding: 15px; background: var(--soft-nude); border-radius: 15px;">
-            <i class="fas fa-star"></i> Extra 1 jam unlimited: 1.700k <br>
-            🎁 <strong>Free welcome mirror</strong> (4-8 jam)
+        <div style="font-size: 0.75rem; background: var(--soft-nude); padding: 10px; border-radius: 10px;">
+          [span_10](start_span)🎁 Free Welcome Mirror (4-8 Jam)[span_10](end_span)<br>
+          [span_11](start_span)Extra 1 Jam Unlimited: 1.700k[span_11](end_span)
         </div>
       </div>
     </div>
-    <p style="text-align: center; margin-top: 30px; font-style: italic; opacity: 0.6; font-size: 0.85rem;">*Standing mirror + request tulisan tersedia (Add-on +250k jika tidak masuk paket free)</p>
+    [span_12](start_span)<p style="text-align: center; margin-top: 20px; font-size: 0.8rem; opacity: 0.6;">*Semua paket tidak termasuk dekorasi dan backdrop[span_12](end_span)</p>
   </section>
 
-  <section id="fasilitas" class="include-section reveal">
+  <section id="fasilitas" class="include-section">
     <div class="section-header">
-        <span>Full Experience</span>
-        <h2 class="serif">Fasilitas Yang Didapat</h2>
+        [span_13](start_span)<h2 class="serif">Fasilitas yang Didapat[span_13](end_span)</h2>
     </div>
     <div class="include-list">
-      <div class="include-item"><i class="fas fa-camera"></i> 1 Set Mesin Premium</div>
-      <div class="include-item"><i class="fas fa-users"></i> 2 Operator Profesional</div>
-      <div class="include-item"><i class="fas fa-magic"></i> Desain Frame Custom</div>
-      <div class="include-item"><i class="fas fa-bolt"></i> Fitur Boomerang & GIF</div>
-      <div class="include-item"><i class="fas fa-cloud"></i> Drive File Original</div>
-      <div class="include-item"><i class="fas fa-smile"></i> Fun Props (Aksesoris)</div>
+      <div class="include-item"><i class="fas fa-camera"></i> 1 Set Photobooth</div>
+      <div class="include-item"><i class="fas fa-user-tie"></i> 2 Operator Profesional</div>
+      <div class="include-item"><i class="fas fa-qrcode"></i> QR Sharing Foto</div>
+      <div class="include-item"><i class="fas fa-paint-brush"></i> Desain Frame Custom</div>
+      <div class="include-item"><i class="fas fa-video"></i> Boomerang & GIF</div>
+      <div class="include-item"><i class="fas fa-hat-wizard"></i> Fun Props Lengkap</div>
       <div class="include-item"><i class="fas fa-lightbulb"></i> Studio Lighting</div>
-      <div class="include-item"><i class="fas fa-car"></i> Free Transport (Dps & Gianyar)</div>
+      <div class="include-item"><i class="fas fa-car"></i> Free Transport (Dps/Gianyar)</div>
     </div>
   </section>
 
-  <section id="order" class="reveal">
-    <div class="order-container">
-      <div class="order-content-text">
-        <h2 class="serif" style="font-size: clamp(2.5rem, 4vw, 3rem);">Ready to Start Your Story?</h2>
-        <p style="opacity: 0.8; font-weight: 300;">Hubungi kami segera untuk mengamankan slot tanggal acara Anda. Kami siap memberikan layanan photobooth terbaik di Bali.</p>
-        <a href="https://wa.me/6281927310298" class="btn" style="background: #25D366; color: white;" target="_blank">
-          <i class="fab fa-whatsapp"></i> Hubungi WhatsApp
-        </a>
+  <section id="order" class="order-container">
+    <div>
+      <h2 class="serif" style="font-size: 2.5rem;">Ready to Capture?</h2>
+      <p style="margin: 20px 0; opacity: 0.8;">Hubungi kami segera untuk mengamankan slot tanggal acara Anda.</p>
+      <a href="https://wa.me/6281927310298" class="btn" style="background: #25D366;"><i class="fab fa-whatsapp"></i> Hubungi WhatsApp</a>
+    </div>
+    <div>
+      <div class="bank-card">
+        <p>BCA Account</p>
+        <strong>7730691801</strong><br>
+        <small>a.n Ni Kadek Dwi Wahyuni</small>
       </div>
-      <div class="bank-wrapper">
-        <div class="bank-card">
-          <p>BCA Account</p>
-          <strong>7730691801</strong><br>
-          <small>a.n Ni Kadek Dwi Wahyuni</small>
-        </div>
-        <div class="bank-card">
-          <p>BRI Account</p>
-          <strong>024801014999530</strong><br>
-          <small>a.n Putu Dimas Sanjaya</small>
-        </div>
+      <div class="bank-card">
+        <p>BRI Account</p>
+        <strong>024801014999530</strong><br>
+        <small>a.n Putu Dimas Sanjaya</small>
       </div>
     </div>
   </section>
-
 </main>
 
-<footer>
-  <div class="container">
-    <h2 class="serif" style="font-size: 2.2rem; letter-spacing: 5px; color: var(--dark-brown);">MONOGA PHOTOBOOTH</h2>
-    <p style="font-size: 0.8rem; letter-spacing: 3px; margin: 10px 0; color: var(--mid-brown);">BALI, INDONESIA</p>
-    
-    <div class="footer-links">
-      <a href="https://instagram.com/monoga.photobooth" target="_blank">
-        <i class="fab fa-instagram"></i> @monoga.photobooth
-      </a>
-      <a href="mailto:monogaphotobooth@gmail.com">
-        <i class="far fa-envelope"></i> monogaphotobooth@gmail.com
-      </a>
-    </div>
-
-    <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 50px;">
-      © 2026 Monoga Photobooth. Cerita Anda, Seketika Diabadikan.
-    </p>
-  </div>
+<footer style="padding: 50px 0; text-align: center; border-top: 1px solid #eee;">
+  <h2 class="serif" style="letter-spacing: 5px;">MONOGA PHOTOBOOTH</h2>
+  <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 20px;">© 2026 Monoga Photobooth Bali. Your story instantly captured.</p>
 </footer>
-
-<script>
-  // Intersection Observer for Reveal Animation
-  const revealElements = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  revealElements.forEach(el => observer.observe(el));
-
-  // Dynamic Smooth Scroll
-  document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
-</script>
 
 </body>
 </html>
