@@ -140,17 +140,14 @@
       border-radius: 150px 150px 20px 20px;
       border: 10px solid var(--white);
       box-shadow: var(--shadow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+      overflow: hidden; /* Mengunci gambar di dalam lengkungan */
     }
 
-    /* Logo Integration Styling */
     .hero-logo-img {
-      width: 85%;
-      height: auto;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Memastikan foto penuh dan tidak gepeng */
+      display: block;
       filter: drop-shadow(0 5px 15px rgba(62, 46, 36, 0.1));
     }
 
@@ -264,6 +261,12 @@
     .bank-card strong { font-size: 1.4rem; letter-spacing: 2px; font-family: monospace; }
     .bank-card small { font-size: 0.85rem; opacity: 0.8; margin-top: 5px; display: block; }
 
+    .logo-bank {
+        height: 25px;
+        float: right;
+        opacity: 0.9;
+    }
+
     /* --- FOOTER --- */
     footer { padding: 80px 0 50px; text-align: center; background: var(--white); border-top: 1px solid rgba(0,0,0,0.05); }
     .footer-links {
@@ -327,7 +330,7 @@
       </div>
     </div>
     <div class="hero-image-frame reveal active">
-      <img src="https://i.ibb.co.com/TBMmd3Xp/6611.jpg" alt="Monoga Logo" class="hero-logo-img">
+      <img src="https://i.postimg.cc/vZ08x9HS/IMG-20260411-WA0004.jpg" alt="Monoga Logo" class="hero-logo-img">
     </div>
   </section>
 
@@ -458,11 +461,13 @@
       </div>
       <div class="bank-wrapper">
         <div class="bank-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA" class="logo-bank">
           <p>BCA Account</p>
           <strong>7730691801</strong><br>
           <small>a.n Ni Kadek Dwi Wahyuni</small>
         </div>
         <div class="bank-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/BRI_Logo.svg" alt="BRI" class="logo-bank">
           <p>BRI Account</p>
           <strong>024801014999530</strong><br>
           <small>a.n Putu Dimas Sanjaya</small>
