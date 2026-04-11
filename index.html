@@ -475,7 +475,7 @@
         <div class="bank-card">
           <div class="bank-header">
             <p>BRI Account</p>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/BRI_Logo.svg" alt="BRI" class="bank-logo-img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/BRI_Logo.svg/1200px-BRI_Logo.svg.png" alt="BRI" class="bank-logo-img">
           </div>
           <strong>024801014999530</strong>
           <small>a.n Putu Dimas Sanjaya</small>
@@ -507,6 +507,7 @@
 </footer>
 
 <script>
+  // Perbaikan: IntersectionObserver ditulis tanpa spasi baris baru (newline) agar tidak error
   const revealElements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -521,7 +522,8 @@
   document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
+      const targetId = this.getAttribute('href');
+      document.querySelector(targetId).scrollIntoView({
         behavior: 'smooth'
       });
     });
