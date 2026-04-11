@@ -58,9 +58,10 @@
     }
 
     .logo-img {
-      max-width: 150px; /* Ukuran disesuaikan agar tidak terpotong */
+      max-width: 180px;
       height: auto;
-      margin-bottom: 15px;
+      display: block;
+      margin: 0 auto 15px auto;
     }
 
     .logo-main {
@@ -214,7 +215,6 @@
     }
     .extra-info-box strong { color: var(--dark-brown); }
     .info-line { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
-    .info-line:last-child { margin-bottom: 0; }
     .info-line i { color: var(--gold); margin-top: 4px; font-size: 0.9rem; }
     .text-free { color: #27ae60; font-weight: 800; text-transform: uppercase; }
 
@@ -246,7 +246,7 @@
       color: var(--gold); font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03);
     }
 
-    /* --- PAYMENT/ORDER SECTION --- */
+    /* --- PAYMENT --- */
     .order-container {
       background: var(--dark-brown);
       color: var(--cream);
@@ -268,22 +268,21 @@
     .bank-wrapper { display: flex; flex-direction: column; gap: 20px; }
     
     .bank-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--white);
+      color: var(--dark-brown);
       padding: 30px; border-radius: 25px;
-      backdrop-filter: blur(10px);
       position: relative;
-      overflow: hidden;
     }
 
     .bank-logo {
-      height: 25px;
+      height: 35px;
+      width: auto;
       margin-bottom: 15px;
-      filter: brightness(0) invert(1); /* Membuat logo putih agar elegan di background gelap */
+      display: block;
     }
 
-    .bank-card p { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
-    .bank-card strong { font-size: 1.4rem; letter-spacing: 2px; font-family: monospace; }
+    .bank-card p { font-size: 0.8rem; color: var(--mid-brown); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+    .bank-card strong { font-size: 1.4rem; letter-spacing: 2px; font-family: monospace; color: var(--dark-brown); }
     .bank-card small { font-size: 0.85rem; opacity: 0.8; margin-top: 5px; display: block; }
 
     /* --- FOOTER --- */
@@ -375,18 +374,9 @@
           <tr><td>10 Jam</td><td><span class="old-p">3.150k</span>2.677k</td></tr>
         </table>
         <div class="extra-info-box" style="background: var(--soft-nude);">
-            <div class="info-line">
-              <i class="fas fa-gift"></i>
-              <span><span class="text-free">Free</span> <strong>Welcome Mirror</strong> (Paket 7-10 Jam)</span>
-            </div>
-            <div class="info-line">
-              <i class="fas fa-plus-circle"></i>
-              <span>Extra 1 Jam QR Scan: <strong>400k</strong></span>
-            </div>
-            <div class="info-line">
-              <i class="fas fa-magic"></i>
-              <span>Sewa Welcome Mirror: <strong>250k</strong></span>
-            </div>
+            <div class="info-line"><i class="fas fa-gift"></i><span><span class="text-free">Free</span> <strong>Welcome Mirror</strong> (Paket 7-10 Jam)</span></div>
+            <div class="info-line"><i class="fas fa-plus-circle"></i><span>Extra 1 Jam QR Scan: <strong>400k</strong></span></div>
+            <div class="info-line"><i class="fas fa-magic"></i><span>Sewa Welcome Mirror: <strong>250k</strong></span></div>
         </div>
       </div>
 
@@ -401,18 +391,9 @@
           <tr><td>700 Pcs / 10 Jam</td><td><span class="old-p">6.000k</span>5.100k</td></tr>
         </table>
         <div class="extra-info-box" style="background: #fdf2e9;">
-            <div class="info-line">
-              <i class="fas fa-gift"></i>
-              <span><span class="text-free">Free</span> <strong>Welcome Mirror</strong> (Paket 6-10 Jam)</span>
-            </div>
-            <div class="info-line">
-              <i class="fas fa-copy"></i>
-              <span>Extra Print: <strong>15k</strong> / lembar</span>
-            </div>
-            <div class="info-line">
-              <i class="fas fa-magic"></i>
-              <span>Sewa Welcome Mirror: <strong>250k</strong></span>
-            </div>
+            <div class="info-line"><i class="fas fa-gift"></i><span><span class="text-free">Free</span> <strong>Welcome Mirror</strong> (Paket 6-10 Jam)</span></div>
+            <div class="info-line"><i class="fas fa-copy"></i><span>Extra Print: <strong>15k</strong> / lembar</span></div>
+            <div class="info-line"><i class="fas fa-magic"></i><span>Sewa Welcome Mirror: <strong>250k</strong></span></div>
         </div>
       </div>
 
@@ -429,18 +410,9 @@
           <tr><td>8 Jam</td><td><span class="old-p">8.000k</span>6.800k</td></tr>
         </table>
         <div class="extra-info-box" style="background: var(--soft-nude);">
-            <div class="info-line">
-              <i class="fas fa-gift"></i>
-              <span><span class="text-free">Free</span> <strong>Welcome Mirror</strong> (Paket 4-8 Jam)</span>
-            </div>
-            <div class="info-line">
-              <i class="fas fa-clock"></i>
-              <span>Extra 1 Jam Unlimited: <strong>1.700k</strong></span>
-            </div>
-            <div class="info-line">
-              <i class="fas fa-magic"></i>
-              <span>Sewa Welcome Mirror: <strong>250k</strong></span>
-            </div>
+            <div class="info-line"><i class="fas fa-gift"></i><span><span class="text-free">Free</span> <strong>Welcome Mirror</strong> (Paket 4-8 Jam)</span></div>
+            <div class="info-line"><i class="fas fa-clock"></i><span>Extra 1 Jam Unlimited: <strong>1.700k</strong></span></div>
+            <div class="info-line"><i class="fas fa-magic"></i><span>Sewa Welcome Mirror: <strong>250k</strong></span></div>
         </div>
       </div>
     </div>
@@ -502,12 +474,8 @@
     <p style="font-size: 0.8rem; letter-spacing: 3px; margin: 10px 0; color: var(--mid-brown);">BALI, INDONESIA</p>
     
     <div class="footer-links">
-      <a href="https://instagram.com/monoga.photobooth" target="_blank">
-        <i class="fab fa-instagram"></i> @monoga.photobooth
-      </a>
-      <a href="mailto:monogaphotobooth@gmail.com">
-        <i class="far fa-envelope"></i> monogaphotobooth@gmail.com
-      </a>
+      <a href="https://instagram.com/monoga.photobooth" target="_blank"><i class="fab fa-instagram"></i> @monoga.photobooth</a>
+      <a href="mailto:monogaphotobooth@gmail.com"><i class="far fa-envelope"></i> monogaphotobooth@gmail.com</a>
     </div>
 
     <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 50px;">
@@ -528,8 +496,7 @@
 
   revealElements.forEach(el => observer.observe(el));
 
-  document.querySelectorAll('nav
-a').forEach(anchor => {
+  document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       document.querySelector(this.getAttribute('href')).scrollIntoView({
