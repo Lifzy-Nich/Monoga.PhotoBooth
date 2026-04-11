@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>Monoga Photobooth | Premium Moment Captured</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -230,7 +230,7 @@
       color: var(--gold); font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03);
     }
 
-    /* --- PAYMENT/ORDER --- */
+    /* --- PAYMENT/ORDER SECTION --- */
     .order-container {
       background: var(--dark-brown);
       color: var(--cream);
@@ -240,9 +240,17 @@
       grid-template-columns: 1fr 1fr;
       gap: 60px;
       align-items: center;
+      margin-bottom: 60px; /* Jarak ke footer */
+    }
+
+    .order-content-text {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
     }
 
     .bank-wrapper { display: flex; flex-direction: column; gap: 20px; }
+    
     .bank-card {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -251,9 +259,10 @@
     }
     .bank-card p { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
     .bank-card strong { font-size: 1.4rem; letter-spacing: 2px; font-family: monospace; }
+    .bank-card small { font-size: 0.85rem; opacity: 0.8; margin-top: 5px; display: block; }
 
     /* --- FOOTER --- */
-    footer { padding: 100px 0 50px; text-align: center; background: var(--white); }
+    footer { padding: 80px 0 50px; text-align: center; background: var(--white); border-top: 1px solid rgba(0,0,0,0.05); }
     .footer-links {
       display: flex; justify-content: center; gap: 40px; margin: 40px 0;
     }
@@ -264,7 +273,7 @@
     }
     .footer-links a:hover { color: var(--gold); transform: translateY(-3px); }
 
-    /* --- FLOATING --- */
+    /* --- FLOATING WA ICON (The Bottom Right One) --- */
     .wa-fixed {
       position: fixed; bottom: 40px; right: 40px;
       width: 65px; height: 65px; background: #25D366;
@@ -275,11 +284,35 @@
     }
     .wa-fixed:hover { transform: scale(1.1) rotate(10deg); }
 
-    /* --- RESPONSIVE --- */
+    /* --- RESPONSIVE MOBILE FIX --- */
     @media (max-width: 992px) {
-      .hero-section, .order-container { grid-template-columns: 1fr; text-align: center; }
-      .hero-image-frame { margin-top: 50px; }
-      .footer-links { flex-direction: column; gap: 20px; }
+      /* Hero/About Fix */
+      .hero-section { grid-template-columns: 1fr; text-align: center; gap: 40px; padding: 60px 0; }
+      .hero-image-frame { margin-top: 0; width: 280px; height: 380px; }
+      .hero-section .btn { width: 100%; max-width: 300px; margin: 0 auto; }
+      
+      /* Pricing Card Fix on Mobile */
+      .price-card { padding: 40px 25px; }
+      .pricing-grid { grid-template-columns: 1fr; gap: 20px; }
+
+      /* Order Section Fix (CRITICAL) */
+      .order-container { 
+        grid-template-columns: 1fr; /* Jadi satu kolom lurus ke bawah */
+        text-align: center; 
+        padding: 50px 30px; /* Beri padding pas di HP agar tidak mepet */
+        gap: 40px; 
+      }
+      .order-content-text { gap: 20px; align-items: center; } /* Ketengahkan isinya */
+      .order-content-text .btn { width: 100%; max-width: 350px; } /* Tombol lebar lurus di HP */
+      
+      .bank-card { padding: 25px; } /* Sedikit kurangi padding bank card */
+      .bank-card strong { font-size: 1.2rem; } /* Kecilkan font nomor bank agar tidak kepotong */
+
+      /* Footer Fix */
+      .footer-links { flex-direction: column; gap: 20px; align-items: center; }
+      
+      /* Floating WA icon smaller on mobile */
+      .wa-fixed { width: 55px; height: 55px; font-size: 28px; bottom: 25px; right: 25px; }
     }
   </style>
 </head>
@@ -304,20 +337,19 @@
 
 <main class="container">
   
-  <section id="about" class="hero-section reveal">
-    <div>
-      <h2 class="serif" style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 30px;">
+  <section id="about" class="hero-section reveal active">
+    <div class="order-content-text"> <h2 class="serif" style="font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.1;">
         Abadikan Cerita Anda <br><span style="color: var(--gold); font-style: italic;">Seketika Tercetak.</span>
       </h2>
-      <p style="font-size: 1.1rem; font-weight: 300; margin-bottom: 40px; color: var(--mid-brown);">
+      <p style="font-size: 1.1rem; font-weight: 300; color: var(--mid-brown);">
         Berasal dari kata <strong>"Monogatari"</strong> (Cerita), kami percaya setiap tawa dan pelukan di acara Anda adalah kisah yang berharga. Monoga Photobooth Bali hadir dengan teknologi cetak instan kualitas lab untuk memastikan kenangan Anda tidak hanya tersimpan di memori, tapi juga di genggaman.
       </p>
-      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: inherit;">
         <a href="#paket" class="btn">Lihat Paket Promo</a>
-        <a href="https://wa.me/6281927310298" class="btn btn-outline">Konsultasi Jadwal</a>
+        <a href="https://wa.me/6281927310298" class="btn btn-outline" target="_blank">Konsultasi Jadwal</a>
       </div>
     </div>
-    <div class="hero-image-frame"></div>
+    <div class="hero-image-frame reveal active"></div>
   </section>
 
   <section id="paket" class="reveal">
@@ -343,7 +375,7 @@
         </div>
       </div>
 
-      <div class="price-card" style="background: #fffcf9; border: 2px solid var(--gold);">
+      <div class="price-card" style="border: 2px solid var(--gold);">
         <span class="badge-promo" style="background: var(--dark-brown);">Best Seller</span>
         <i class="fas fa-print" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;"></i>
         <h3 class="serif">QR & Print <br><span style="font-size: 1rem; font-family: 'Montserrat'; font-weight: 400; color: var(--mid-brown);">Quota Cetak Terbatas</span></h3>
@@ -397,10 +429,10 @@
 
   <section id="order" class="reveal">
     <div class="order-container">
-      <div>
-        <h2 class="serif" style="font-size: 3rem; margin-bottom: 25px;">Ready to Start Your Story?</h2>
-        <p style="margin-bottom: 40px; opacity: 0.8; font-weight: 300;">Hubungi kami segera untuk mengamankan slot tanggal acara Anda. Kami siap memberikan layanan photobooth terbaik di Bali.</p>
-        <a href="https://wa.me/6281927310298" class="btn" style="background: #25D366; color: white;">
+      <div class="order-content-text">
+        <h2 class="serif" style="font-size: clamp(2.5rem, 4vw, 3rem);">Ready to Start Your Story?</h2>
+        <p style="opacity: 0.8; font-weight: 300;">Hubungi kami segera untuk mengamankan slot tanggal acara Anda. Kami siap memberikan layanan photobooth terbaik di Bali.</p>
+        <a href="https://wa.me/6281927310298" class="btn" style="background: #25D366; color: white;" target="_blank">
           <i class="fab fa-whatsapp"></i> Hubungi WhatsApp
         </a>
       </div>
@@ -423,7 +455,7 @@
 
 <footer>
   <div class="container">
-    <h2 class="serif" style="font-size: 2.2rem; letter-spacing: 5px;">MONOGA PHOTOBOOTH</h2>
+    <h2 class="serif" style="font-size: 2.2rem; letter-spacing: 5px; color: var(--dark-brown);">MONOGA PHOTOBOOTH</h2>
     <p style="font-size: 0.8rem; letter-spacing: 3px; margin: 10px 0; color: var(--mid-brown);">BALI, INDONESIA</p>
     
     <div class="footer-links">
@@ -454,7 +486,7 @@
 
   revealElements.forEach(el => observer.observe(el));
 
-  // Dynamic Hover for Nav
+  // Dynamic Smooth Scroll
   document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
