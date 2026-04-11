@@ -20,8 +20,8 @@
       --mid-brown: #7a6354;
       --white: #ffffff;
       --glass: rgba(255, 255, 255, 0.8);
-      --shadow: 0 20px 40px rgba(62, 46, 36, 0.1);
-      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      --shadow: 0 20px 40px rgba(62, 46, 36, 0.08);
+      --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
       --alert: #a04000;
     }
 
@@ -31,52 +31,50 @@
       background-color: var(--cream);
       color: var(--dark-brown);
       font-family: 'Montserrat', sans-serif;
-      line-height: 1.7;
+      line-height: 1.8;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
-    h1, h2, h3, h4, .serif { font-family: 'Cormorant Garamond', serif; }
+    h1, h2, h3, h4, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 700; }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
+    /* Animasi Reveal */
+    .reveal { opacity: 0; transform: translateY(40px); transition: var(--transition); }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
     /* --- HEADER --- */
     header {
-      padding: 40px 0;
+      padding: 50px 0;
       text-align: center;
       background: linear-gradient(to bottom, var(--soft-nude), transparent);
     }
 
-    .logo-container { margin-bottom: 25px; }
     .logo-main {
-      font-size: clamp(2.2rem, 6vw, 3.5rem);
-      font-weight: 700;
-      letter-spacing: 10px;
+      font-size: clamp(2.5rem, 7vw, 4rem);
+      letter-spacing: 12px;
       text-transform: uppercase;
       color: var(--dark-brown);
-      position: relative;
+      margin-bottom: 5px;
     }
-    .logo-main i { color: var(--gold); font-size: 0.8em; vertical-align: middle; }
+    .logo-main i { color: var(--gold); font-size: 0.7em; }
     .logo-sub {
-      font-size: 0.85rem;
-      letter-spacing: 5px;
+      font-size: 0.9rem;
+      letter-spacing: 6px;
       color: var(--mid-brown);
       text-transform: uppercase;
-      margin-top: 10px;
       font-weight: 400;
     }
 
     nav {
       display: flex;
       justify-content: center;
-      gap: 35px;
-      margin-top: 30px;
-      padding: 15px 0;
-      border-top: 1px solid rgba(165, 131, 110, 0.2);
-      border-bottom: 1px solid rgba(165, 131, 110, 0.2);
+      gap: 40px;
+      margin-top: 40px;
+      padding: 20px 0;
+      border-top: 1px solid rgba(165, 131, 110, 0.15);
+      border-bottom: 1px solid rgba(165, 131, 110, 0.15);
     }
 
     nav a {
@@ -87,33 +85,29 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       transition: var(--transition);
-      position: relative;
     }
 
-    nav a:hover { color: var(--gold); }
+    nav a:hover { color: var(--gold); transform: translateY(-2px); }
 
     /* --- BUTTONS --- */
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 16px 38px;
+      gap: 12px;
+      padding: 18px 42px;
       background: var(--gold);
       color: var(--white);
       text-decoration: none;
       border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-weight: 700;
+      font-size: 0.95rem;
       transition: var(--transition);
-      box-shadow: 0 10px 20px rgba(201, 169, 107, 0.2);
+      box-shadow: 0 10px 25px rgba(201, 169, 107, 0.25);
       border: none;
       cursor: pointer;
     }
 
-    .btn:hover {
-      background: var(--dark-brown);
-      transform: translateY(-5px);
-    }
+    .btn:hover { background: var(--dark-brown); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(62, 46, 36, 0.2); }
 
     .btn-outline {
       background: transparent;
@@ -122,176 +116,160 @@
       box-shadow: none;
     }
 
-    /* --- HERO/ABOUT --- */
+    /* --- HERO --- */
     .hero-section {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 60px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
       align-items: center;
-      padding: 100px 0;
+      padding: 120px 0;
     }
 
     .hero-image-frame {
       position: relative;
-      width: 300px;
-      height: 420px;
+      width: 320px;
+      height: 450px;
       margin: 0 auto;
       background: var(--white);
-      border-radius: 150px 150px 20px 20px;
-      border: 10px solid var(--white);
+      border-radius: 160px 160px 30px 30px;
+      border: 12px solid var(--white);
       box-shadow: var(--shadow);
-      overflow: hidden; /* Mengunci gambar di dalam lengkungan */
+      overflow: hidden;
+      transition: var(--transition);
     }
+
+    .hero-image-frame:hover { transform: scale(1.02); }
 
     .hero-logo-img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Memastikan foto penuh dan tidak gepeng */
+      object-fit: cover;
       display: block;
-      filter: drop-shadow(0 5px 15px rgba(62, 46, 36, 0.1));
     }
 
-    /* --- PRICING --- */
-    .section-header { text-align: center; margin-bottom: 60px; }
-    .section-header span { color: var(--gold); font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; }
-    .section-header h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-top: 10px; }
-
+    /* --- PRICING CARDS --- */
+    .section-header { text-align: center; margin-bottom: 80px; }
+    .section-header span { color: var(--gold); font-weight: 700; letter-spacing: 4px; font-size: 0.85rem; text-transform: uppercase; }
+    
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      align-items: stretch;
     }
 
     .price-card {
       background: var(--white);
-      padding: 50px 40px;
-      border-radius: 30px;
+      padding: 60px 45px;
+      border-radius: 40px;
       border: 1px solid rgba(201, 169, 107, 0.1);
       transition: var(--transition);
       position: relative;
       display: flex;
       flex-direction: column;
+      height: 100%;
     }
 
-    .price-card:hover { transform: translateY(-15px); border-color: var(--gold); box-shadow: var(--shadow); }
+    .price-card:hover { transform: translateY(-20px); border-color: var(--gold); box-shadow: 0 30px 60px rgba(62, 46, 36, 0.1); }
+
+    .price-card.featured {
+      border: 2.5px solid var(--gold);
+      transform: scale(1.05);
+      z-index: 2;
+    }
 
     .badge-promo {
-      position: absolute; top: 25px; right: 25px;
+      position: absolute; top: 30px; right: 30px;
       background: var(--gold); color: white;
-      padding: 5px 15px; border-radius: 20px;
-      font-size: 0.75rem; font-weight: 700;
+      padding: 6px 18px; border-radius: 50px;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 1px;
     }
 
-    .price-card h3 { font-size: 2rem; margin-bottom: 25px; line-height: 1.1; }
-    .price-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
-    .price-table td { padding: 10px 0; border-bottom: 1px solid #f5eee6; font-size: 0.85rem; }
-    .price-table td:last-child { text-align: right; font-weight: 700; }
+    .price-card h3 { font-size: 2.2rem; margin-bottom: 30px; line-height: 1.2; }
+    .price-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
+    .price-table td { padding: 12px 0; border-bottom: 1px solid #f8f1ea; font-size: 0.9rem; }
+    .price-table td:last-child { text-align: right; font-weight: 700; color: var(--gold-dark); }
     
-    .old-p { text-decoration: line-through; color: var(--mid-brown); font-size: 0.75rem; margin-right: 8px; font-weight: 400; opacity: 0.6; }
+    .old-p { text-decoration: line-through; color: #b7a497; font-size: 0.8rem; margin-right: 10px; opacity: 0.6; }
 
     .extra-info-box {
       margin-top: auto;
       font-size: 0.85rem;
-      padding: 18px;
-      border-radius: 15px;
-      line-height: 1.6;
+      padding: 25px;
+      border-radius: 20px;
+      background: var(--cream);
+      border: 1px dashed var(--gold);
     }
-    .extra-info-box strong { color: var(--dark-brown); }
-    .info-line { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
-    .info-line:last-child { margin-bottom: 0; }
-    .info-line i { color: var(--gold); margin-top: 4px; font-size: 0.9rem; }
-    .text-free { color: #27ae60; font-weight: 800; text-transform: uppercase; }
 
-    /* --- INCLUDES --- */
+    /* --- FACILITIES --- */
     .include-section {
       background: var(--soft-nude);
-      padding: 80px 40px;
-      border-radius: 50px;
-      margin: 60px 0;
+      padding: 100px 50px;
+      border-radius: 60px;
+      margin: 100px 0;
     }
 
     .include-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
     }
 
     .include-item {
+      background: var(--white);
+      padding: 25px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
-      gap: 15px;
-      font-size: 0.95rem;
-      font-weight: 500;
+      gap: 20px;
+      transition: var(--transition);
     }
+    .include-item:hover { transform: scale(1.05); box-shadow: var(--shadow); }
+    .include-item i { color: var(--gold); font-size: 1.2rem; }
 
-    .include-item i {
-      width: 35px; height: 35px; background: var(--white);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      color: var(--gold); font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-    }
-
-    /* --- PAYMENT/ORDER SECTION --- */
+    /* --- ORDER SECTION --- */
     .order-container {
       background: var(--dark-brown);
       color: var(--cream);
-      padding: 80px 60px;
-      border-radius: 50px;
+      padding: 100px 80px;
+      border-radius: 60px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 80px;
       align-items: center;
-      margin-bottom: 60px;
+      margin-bottom: 100px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .order-content-text {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-
-    .bank-wrapper { display: flex; flex-direction: column; gap: 20px; }
-    
     .bank-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 30px; border-radius: 25px;
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 35px; border-radius: 30px;
+      transition: var(--transition);
+      cursor: pointer;
     }
-    .bank-card p { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
-    .bank-card strong { font-size: 1.4rem; letter-spacing: 2px; font-family: monospace; }
-    .bank-card small { font-size: 0.85rem; opacity: 0.8; margin-top: 5px; display: block; }
-
-    .logo-bank {
-        height: 25px;
-        float: right;
-        opacity: 0.9;
-    }
+    .bank-card:hover { background: rgba(255, 255, 255, 0.07); transform: translateX(10px); }
 
     /* --- FOOTER --- */
-    footer { padding: 80px 0 50px; text-align: center; background: var(--white); border-top: 1px solid rgba(0,0,0,0.05); }
-    .footer-links {
-      display: flex; justify-content: center; gap: 40px; margin: 40px 0;
-    }
-    .footer-links a {
-      text-decoration: none; color: var(--dark-brown);
-      display: flex; align-items: center; gap: 10px; font-weight: 600;
-      transition: var(--transition);
-    }
-    .footer-links a:hover { color: var(--gold); transform: translateY(-3px); }
-
+    footer { padding: 100px 0 60px; text-align: center; background: var(--white); }
+    
     .wa-fixed {
       position: fixed; bottom: 40px; right: 40px;
-      width: 65px; height: 65px; background: #25D366;
+      width: 70px; height: 70px; background: #25D366;
       color: white; border-radius: 50%; display: flex;
       align-items: center; justify-content: center;
-      font-size: 32px; z-index: 1000; box-shadow: 0 15px 30px rgba(37,211,102,0.3);
+      font-size: 35px; z-index: 1000; 
+      box-shadow: 0 20px 40px rgba(37,211,102,0.4);
       transition: var(--transition);
     }
+    .wa-fixed:hover { transform: scale(1.1) rotate(15deg); }
 
     @media (max-width: 992px) {
-      .hero-section { grid-template-columns: 1fr; text-align: center; gap: 40px; padding: 60px 0; }
-      .order-container { grid-template-columns: 1fr; text-align: center; padding: 50px 30px; gap: 40px; }
-      .footer-links { flex-direction: column; gap: 20px; align-items: center; }
+      .hero-section, .order-container { grid-template-columns: 1fr; text-align: center; padding: 60px 30px; }
+      .price-card.featured { transform: scale(1); }
+      .hero-image-frame { width: 280px; height: 400px; }
     }
   </style>
 </head>
@@ -318,111 +296,75 @@
   
   <section id="about" class="hero-section reveal active">
     <div class="order-content-text"> 
-      <h2 class="serif" style="font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.1;">
-        Abadikan Cerita Anda <br><span style="color: var(--gold); font-style: italic;">Your story instantly captured.</span>
+      <h2 class="serif" style="font-size: clamp(3rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 20px;">
+        Abadikan Cerita <br><span style="color: var(--gold); font-style: italic;">Berharga Anda.</span>
       </h2>
-      <p style="font-size: 1.1rem; font-weight: 300; color: var(--mid-brown);">
-        Berasal dari kata <strong>"Monogatari"</strong> (Cerita), kami percaya setiap tawa dan pelukan di acara Anda adalah kisah yang berharga. Monoga Photobooth Bali hadir untuk memastikan kenangan Anda tidak hanya tersimpan di memori, tapi juga di genggaman.
+      <p style="font-size: 1.2rem; font-weight: 300; color: var(--mid-brown); margin-bottom: 40px;">
+        Terinspirasi dari <strong>"Monogatari"</strong>, kami percaya setiap momen adalah kisah unik. Monoga Photobooth Bali menghadirkan kualitas studio ke setiap perayaan Anda.
       </p>
       <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: inherit;">
-        <a href="#paket" class="btn">Lihat Paket Promo</a>
-        <a href="https://wa.me/6281927310298" class="btn btn-outline" target="_blank">Konsultasi Jadwal</a>
+        <a href="#paket" class="btn">Eksplorasi Paket</a>
+        <a href="https://wa.me/6281927310298" class="btn btn-outline" target="_blank">Konsultasi Gratis</a>
       </div>
     </div>
-    <div class="hero-image-frame reveal active">
+    <div class="hero-image-frame">
       <img src="https://i.postimg.cc/vZ08x9HS/IMG-20260411-WA0004.jpg" alt="Monoga Logo" class="hero-logo-img">
     </div>
   </section>
 
   <section id="paket" class="reveal">
     <div class="section-header">
-      <span>Special Potongan Harga 15%</span>
-      <h2 class="serif">Pilih Paket Kebahagiaanmu</h2>
-      <p style="font-size: 1.1rem; margin-top: 15px; color: var(--alert); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
-        * Semua paket tidak termasuk dekorasi dan backdrop *
-      </p>
+      <span>Penawaran Terbatas</span>
+      <h2 class="serif" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">Paket Eksklusif - Potongan 15%</h2>
+      <p style="color: var(--alert); font-weight: 700; margin-top: 15px; letter-spacing: 1px;">* HARGA BELUM TERMASUK DEKORASI & BACKDROP *</p>
     </div>
 
     <div class="pricing-grid">
       <div class="price-card">
-        <span class="badge-promo">-15% OFF</span>
-        <i class="fas fa-qrcode" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;"></i>
-        <h3 class="serif">QR Scan Only <br><span style="font-size: 1rem; font-family: 'Montserrat'; font-weight: 400; color: var(--mid-brown);">Digital Only, Tanpa Print</span></h3>
+        <span class="badge-promo">-15%</span>
+        <i class="fas fa-qrcode" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 25px;"></i>
+        <h3 class="serif">QR Scan <br><small style="font-size: 1rem; font-family: 'Montserrat'; font-weight: 400; color: var(--mid-brown);">Digital Experience</small></h3>
         <table class="price-table">
           <tr><td>3 Jam</td><td><span class="old-p">1.400k</span>1.190k</td></tr>
           <tr><td>4 Jam</td><td><span class="old-p">1.650k</span>1.402k</td></tr>
-          <tr><td>5 Jam</td><td><span class="old-p">1.900k</span>1.615k</td></tr>
           <tr><td>6 Jam</td><td><span class="old-p">2.150k</span>1.827k</td></tr>
-          <tr><td>8 Jam</td><td><span class="old-p">2.650k</span>2.252k</td></tr>
           <tr><td>10 Jam</td><td><span class="old-p">3.150k</span>2.677k</td></tr>
         </table>
-        <div class="extra-info-box" style="background: var(--soft-nude);">
-            <div class="info-line">
-              <i class="fas fa-gift"></i>
-              <span><span class="text-free">Free</span> <strong>Welcome Mirror</strong> (Paket 7-10 Jam)</span>
-            </div>
-            <div class="info-line">
-              <i class="fas fa-plus-circle"></i>
-              <span>Extra 1 Jam QR Scan: <strong>400k</strong></span>
-            </div>
-            <div class="info-line">
-              <i class="fas fa-magic"></i>
-              <span>Sewa Welcome Mirror: <strong>250k</strong></span>
-            </div>
+        <div class="extra-info-box">
+            <div style="margin-bottom: 10px;"><i class="fas fa-gift" style="color: var(--gold);"></i> <strong>Free Mirror</strong> (Paket 7-10 Jam)</div>
+            <div><i class="fas fa-plus-circle" style="color: var(--gold);"></i> Extra Hour: <strong>400k</strong></div>
         </div>
       </div>
 
-      <div class="price-card" style="border: 2px solid var(--gold);">
-        <span class="badge-promo" style="background: var(--dark-brown);">Best Seller</span>
-        <i class="fas fa-print" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;"></i>
-        <h3 class="serif">QR & Print <br><span style="font-size: 1rem; font-family: 'Montserrat'; font-weight: 400; color: var(--mid-brown);">Kuota Cetak Terbatas</span></h3>
+      <div class="price-card featured">
+        <span class="badge-promo" style="background: var(--dark-brown);">Favorit</span>
+        <i class="fas fa-print" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 25px;"></i>
+        <h3 class="serif">QR & Print <br><small style="font-size: 1rem; font-family: 'Montserrat'; font-weight: 400; color: var(--mid-brown);">Classic Memory</small></h3>
         <table class="price-table">
           <tr><td>100 Pcs / 4 Jam</td><td><span class="old-p">1.900k</span>1.615k</td></tr>
           <tr><td>300 Pcs / 6 Jam</td><td><span class="old-p">3.550k</span>3.017k</td></tr>
           <tr><td>500 Pcs / 8 Jam</td><td><span class="old-p">4.800k</span>4.080k</td></tr>
           <tr><td>700 Pcs / 10 Jam</td><td><span class="old-p">6.000k</span>5.100k</td></tr>
         </table>
-        <div class="extra-info-box" style="background: #fdf2e9;">
-            <div class="info-line">
-              <i class="fas fa-gift"></i>
-              <span><span class="text-free">Free</span> <strong>Welcome Mirror</strong> (Paket 6-10 Jam)</span>
-            </div>
-            <div class="info-line">
-              <i class="fas fa-copy"></i>
-              <span>Extra Print: <strong>15k</strong> / lembar</span>
-            </div>
-            <div class="info-line">
-              <i class="fas fa-magic"></i>
-              <span>Sewa Welcome Mirror: <strong>250k</strong></span>
-            </div>
+        <div class="extra-info-box" style="background: #fff9f4;">
+            <div style="margin-bottom: 10px;"><i class="fas fa-gift" style="color: var(--gold);"></i> <strong>Free Mirror</strong> (Paket 6-10 Jam)</div>
+            <div><i class="fas fa-copy" style="color: var(--gold);"></i> Extra: <strong>15k/lembar</strong></div>
         </div>
       </div>
 
       <div class="price-card">
-        <span class="badge-promo">-15% OFF</span>
-        <i class="fas fa-infinity" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;"></i>
-        <h3 class="serif">Unlimited <br><span style="font-size: 1rem; font-family: 'Montserrat'; font-weight: 400; color: var(--mid-brown);">Digital + Cetak Puas</span></h3>
+        <span class="badge-promo">-15%</span>
+        <i class="fas fa-infinity" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 25px;"></i>
+        <h3 class="serif">Unlimited <br><small style="font-size: 1rem; font-family: 'Montserrat'; font-weight: 400; color: var(--mid-brown);">The VIP Choice</small></h3>
         <table class="price-table">
           <tr><td>2 Jam</td><td><span class="old-p">3.700k</span>3.145k</td></tr>
-          <tr><td>3 Jam</td><td><span class="old-p">4.400k</span>3.740k</td></tr>
           <tr><td>4 Jam</td><td><span class="old-p">5.100k</span>4.335k</td></tr>
-          <tr><td>5 Jam</td><td><span class="old-p">5.900k</span>5.015k</td></tr>
           <tr><td>6 Jam</td><td><span class="old-p">6.600k</span>5.610k</td></tr>
           <tr><td>8 Jam</td><td><span class="old-p">8.000k</span>6.800k</td></tr>
         </table>
-        <div class="extra-info-box" style="background: var(--soft-nude);">
-            <div class="info-line">
-              <i class="fas fa-gift"></i>
-              <span><span class="text-free">Free</span> <strong>Welcome Mirror</strong> (Paket 4-8 Jam)</span>
-            </div>
-            <div class="info-line">
-              <i class="fas fa-clock"></i>
-              <span>Extra 1 Jam Unlimited: <strong>1.700k</strong></span>
-            </div>
-            <div class="info-line">
-              <i class="fas fa-magic"></i>
-              <span>Sewa Welcome Mirror: <strong>250k</strong></span>
-            </div>
+        <div class="extra-info-box">
+            <div style="margin-bottom: 10px;"><i class="fas fa-gift" style="color: var(--gold);"></i> <strong>Free Mirror</strong> (Paket 4-8 Jam)</div>
+            <div><i class="fas fa-clock" style="color: var(--gold);"></i> Extra Hour: <strong>1.700k</strong></div>
         </div>
       </div>
     </div>
@@ -430,48 +372,44 @@
 
   <section id="fasilitas" class="include-section reveal">
     <div class="section-header">
-        <span>Full Experience</span>
-        <h2 class="serif">Fasilitas Yang Didapat</h2>
+        <span>Kualitas Terjamin</span>
+        <h2 class="serif">Layanan Standar Premium</h2>
     </div>
     <div class="include-list">
-      <div class="include-item"><i class="fas fa-camera"></i> 1 Set Mesin Premium</div>
-      <div class="include-item"><i class="fas fa-users"></i> 2 Operator Profesional</div>
-      <div class="include-item"><i class="fas fa-magic"></i> Desain Frame Custom</div>
-      <div class="include-item"><i class="fas fa-bolt"></i> Fitur Boomerang & GIF</div>
-      <div class="include-item"><i class="fas fa-cloud"></i> Drive File Original</div>
-      <div class="include-item"><i class="fas fa-smile"></i> Fun Props (Aksesoris)</div>
-      <div class="include-item"><i class="fas fa-lightbulb"></i> Studio Lighting</div>
-      <div class="include-item"><i class="fas fa-car"></i> Free Transport (Dps & Gianyar)</div>
+      <div class="include-item"><i class="fas fa-camera"></i> Mesin & Kamera High-End</div>
+      <div class="include-item"><i class="fas fa-users"></i> Tim Profesional</div>
+      <div class="include-item"><i class="fas fa-palette"></i> Desain Frame Personal</div>
+      <div class="include-item"><i class="fas fa-bolt"></i> Animasi Boomerang & GIF</div>
+      <div class="include-item"><i class="fas fa-cloud-upload-alt"></i> Akses Cloud 24/7</div>
+      <div class="include-item"><i class="fas fa-theater-masks"></i> Properti Lucu & Elegan</div>
+      <div class="include-item"><i class="fas fa-lightbulb"></i> Pencahayaan Studio</div>
+      <div class="include-item"><i class="fas fa-shipping-fast"></i> Transportasi Area Bali</div>
     </div>
   </section>
 
   <section id="order" class="reveal">
     <div class="order-container">
-      <div class="order-content-text">
-        <h2 class="serif" style="font-size: clamp(2.5rem, 4vw, 3rem);">Ready to Start Your Story?</h2>
-        <p style="opacity: 1; font-weight: 300;">
-          Hubungi kami segera untuk booking. <br>
-          <span style="display: block; margin-top: 15px; background: var(--white); color: var(--dark-brown); padding: 10px 15px; border-radius: 10px; font-weight: 700; border-left: 5px solid var(--gold);">
-            PENTING: DP Minimal 50% dari total pembayaran.
-          </span>
-        </p>
-        <a href="https://wa.me/6281927310298" class="btn" style="background: #25D366; color: white;" target="_blank">
-          <i class="fab fa-whatsapp"></i> Hubungi WhatsApp
+      <div>
+        <h2 class="serif" style="font-size: 3.5rem; margin-bottom: 25px;">Siap Mengukir Sejarah?</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 40px; opacity: 0.9;">Segera hubungi kami untuk ketersediaan tanggal. Kebahagiaan Anda adalah prioritas kami.</p>
+        <a href="https://wa.me/6281927310298" class="btn" style="background: #25D366;">
+          <i class="fab fa-whatsapp"></i> Chat WhatsApp Sekarang
         </a>
       </div>
-      <div class="bank-wrapper">
+      <div style="display: flex; flex-direction: column; gap: 20px;">
         <div class="bank-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA" class="logo-bank">
-          <p>BCA Account</p>
-          <strong>7730691801</strong><br>
-          <small>a.n Ni Kadek Dwi Wahyuni</small>
+          <p style="color: var(--gold); font-size: 0.8rem; letter-spacing: 2px;">BCA TRANSFER</p>
+          <strong style="font-size: 1.6rem;">7730691801</strong>
+          <small style="display: block; margin-top: 5px;">a.n Ni Kadek Dwi Wahyuni</small>
         </div>
         <div class="bank-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/BRI_Logo.svg" alt="BRI" class="logo-bank">
-          <p>BRI Account</p>
-          <strong>024801014999530</strong><br>
-          <small>a.n Putu Dimas Sanjaya</small>
+          <p style="color: var(--gold); font-size: 0.8rem; letter-spacing: 2px;">BRI TRANSFER</p>
+          <strong style="font-size: 1.6rem;">024801014999530</strong>
+          <small style="display: block; margin-top: 5px;">a.n Putu Dimas Sanjaya</small>
         </div>
+        <p style="font-size: 0.8rem; text-align: center; border: 1px solid var(--gold); padding: 10px; border-radius: 10px;">
+            <i class="fas fa-info-circle"></i> Minimal DP 50% untuk konfirmasi jadwal.
+        </p>
       </div>
     </div>
   </section>
@@ -480,25 +418,22 @@
 
 <footer>
   <div class="container">
-    <h2 class="serif" style="font-size: 2.2rem; letter-spacing: 5px; color: var(--dark-brown);">MONOGA PHOTOBOOTH</h2>
-    <p style="font-size: 0.8rem; letter-spacing: 3px; margin: 10px 0; color: var(--mid-brown);">BALI, INDONESIA</p>
+    <h2 class="serif" style="font-size: 2.5rem; letter-spacing: 8px; color: var(--dark-brown);">MONOGA</h2>
+    <p style="font-size: 0.9rem; letter-spacing: 4px; color: var(--gold);">BALI • INDONESIA</p>
     
-    <div class="footer-links">
-      <a href="https://instagram.com/monoga.photobooth" target="_blank">
-        <i class="fab fa-instagram"></i> @monoga.photobooth
-      </a>
-      <a href="mailto:monogaphotobooth@gmail.com">
-        <i class="far fa-envelope"></i> monogaphotobooth@gmail.com
-      </a>
+    <div style="display: flex; justify-content: center; gap: 40px; margin: 40px 0;">
+      <a href="https://instagram.com/monoga.photobooth" style="color: var(--dark-brown); text-decoration: none; font-weight: 600;"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="mailto:monogaphotobooth@gmail.com" style="color: var(--dark-brown); text-decoration: none; font-weight: 600;"><i class="far fa-envelope"></i> Email Us</a>
     </div>
 
-    <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 50px;">
-      © 2026 Monoga Photobooth. Your story instantly captured.
+    <p style="font-size: 0.75rem; opacity: 0.4; margin-top: 60px;">
+      &copy; 2026 Monoga Photobooth. All Rights Reserved.
     </p>
   </div>
 </footer>
 
 <script>
+  // Script untuk efek reveal saat scroll
   const revealElements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -506,16 +441,21 @@
         entry.target.classList.add('active');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.15 });
 
   revealElements.forEach(el => observer.observe(el));
 
+  // Script Smooth Scroll
   document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if(target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      if(targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 50,
+          behavior: 'smooth'
+        });
       }
     });
   });
