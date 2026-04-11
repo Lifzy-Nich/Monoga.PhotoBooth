@@ -22,6 +22,7 @@
       --glass: rgba(255, 255, 255, 0.8);
       --shadow: 0 20px 40px rgba(62, 46, 36, 0.1);
       --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      --alert: #a04000;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -192,6 +193,20 @@
     
     .old-p { text-decoration: line-through; color: var(--mid-brown); font-size: 0.75rem; margin-right: 8px; font-weight: 400; opacity: 0.6; }
 
+    /* Extra Info Styling */
+    .extra-info-box {
+      margin-top: auto;
+      font-size: 0.85rem;
+      padding: 18px;
+      border-radius: 15px;
+      line-height: 1.6;
+    }
+    .extra-info-box strong { color: var(--dark-brown); }
+    .info-line { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
+    .info-line:last-child { margin-bottom: 0; }
+    .info-line i { color: var(--gold); margin-top: 4px; font-size: 0.9rem; }
+    .text-free { color: #27ae60; font-weight: 800; text-transform: uppercase; }
+
     /* --- INCLUDES --- */
     .include-section {
       background: var(--soft-nude);
@@ -320,7 +335,9 @@
     <div class="section-header">
       <span>Special Potongan Harga 15%</span>
       <h2 class="serif">Pilih Paket Kebahagiaanmu</h2>
-      <p style="font-size: 0.9rem; margin-top: 15px; color: var(--mid-brown); font-style: italic;">*Semua paket tidak termasuk dekorasi dan backdrop</p>
+      <p style="font-size: 1.1rem; margin-top: 15px; color: var(--alert); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+        * Semua paket tidak termasuk dekorasi dan backdrop *
+      </p>
     </div>
 
     <div class="pricing-grid">
@@ -336,9 +353,19 @@
           <tr><td>8 Jam</td><td><span class="old-p">2.650k</span>2.252k</td></tr>
           <tr><td>10 Jam</td><td><span class="old-p">3.150k</span>2.677k</td></tr>
         </table>
-        <div style="margin-top: auto; font-size: 0.8rem; padding: 12px; background: var(--soft-nude); border-radius: 15px;">
-            🎁 <strong>Free welcome mirror</strong> (7-10 jam)<br>
-            <i class="fas fa-plus-circle"></i> Tambahan sewa welcome mirror: 250k
+        <div class="extra-info-box" style="background: var(--soft-nude);">
+            <div class="info-line">
+              <i class="fas fa-gift"></i>
+              <span><span class="text-free">Free</span> <strong>Welcome Mirror</strong> (Paket 7-10 Jam)</span>
+            </div>
+            <div class="info-line">
+              <i class="fas fa-plus-circle"></i>
+              <span>Extra 1 Jam QR Scan: <strong>400k</strong></span>
+            </div>
+            <div class="info-line">
+              <i class="fas fa-magic"></i>
+              <span>Sewa Welcome Mirror: <strong>250k</strong></span>
+            </div>
         </div>
       </div>
 
@@ -352,9 +379,19 @@
           <tr><td>500 Pcs / 8 Jam</td><td><span class="old-p">4.800k</span>4.080k</td></tr>
           <tr><td>700 Pcs / 10 Jam</td><td><span class="old-p">6.000k</span>5.100k</td></tr>
         </table>
-        <div style="margin-top: auto; font-size: 0.8rem; padding: 12px; background: #fdf2e9; border-radius: 15px;">
-            🎁 <strong>Free welcome mirror</strong> (6-10 jam)<br>
-            <i class="fas fa-plus"></i> Extra Print: 15k/lembar | Mirror: 250k
+        <div class="extra-info-box" style="background: #fdf2e9;">
+            <div class="info-line">
+              <i class="fas fa-gift"></i>
+              <span><span class="text-free">Free</span> <strong>Welcome Mirror</strong> (Paket 6-10 Jam)</span>
+            </div>
+            <div class="info-line">
+              <i class="fas fa-copy"></i>
+              <span>Extra Print: <strong>15k</strong> / lembar</span>
+            </div>
+            <div class="info-line">
+              <i class="fas fa-magic"></i>
+              <span>Sewa Welcome Mirror: <strong>250k</strong></span>
+            </div>
         </div>
       </div>
 
@@ -370,9 +407,19 @@
           <tr><td>6 Jam</td><td><span class="old-p">6.600k</span>5.610k</td></tr>
           <tr><td>8 Jam</td><td><span class="old-p">8.000k</span>6.800k</td></tr>
         </table>
-        <div style="margin-top: auto; font-size: 0.8rem; padding: 12px; background: var(--soft-nude); border-radius: 15px;">
-            🎁 <strong>Free welcome mirror</strong> (4-8 jam)<br>
-            <i class="fas fa-star"></i> Extra 1 jam: 1.700k | Mirror: 250k
+        <div class="extra-info-box" style="background: var(--soft-nude);">
+            <div class="info-line">
+              <i class="fas fa-gift"></i>
+              <span><span class="text-free">Free</span> <strong>Welcome Mirror</strong> (Paket 4-8 Jam)</span>
+            </div>
+            <div class="info-line">
+              <i class="fas fa-clock"></i>
+              <span>Extra 1 Jam Unlimited: <strong>1.700k</strong></span>
+            </div>
+            <div class="info-line">
+              <i class="fas fa-magic"></i>
+              <span>Sewa Welcome Mirror: <strong>250k</strong></span>
+            </div>
         </div>
       </div>
     </div>
@@ -399,7 +446,12 @@
     <div class="order-container">
       <div class="order-content-text">
         <h2 class="serif" style="font-size: clamp(2.5rem, 4vw, 3rem);">Ready to Start Your Story?</h2>
-        <p style="opacity: 0.8; font-weight: 300;">Hubungi kami segera untuk booking. <br><strong>Catatan: DP Minimal 50% dari total pembayaran.</strong></p>
+        <p style="opacity: 1; font-weight: 300;">
+          Hubungi kami segera untuk booking. <br>
+          <span style="display: block; margin-top: 15px; background: var(--white); color: var(--dark-brown); padding: 10px 15px; border-radius: 10px; font-weight: 700; border-left: 5px solid var(--gold);">
+            PENTING: DP Minimal 50% dari total pembayaran.
+          </span>
+        </p>
         <a href="https://wa.me/6281927310298" class="btn" style="background: #25D366; color: white;" target="_blank">
           <i class="fab fa-whatsapp"></i> Hubungi WhatsApp
         </a>
