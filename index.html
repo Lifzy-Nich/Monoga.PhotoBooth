@@ -136,7 +136,7 @@
       width: 300px;
       height: 420px;
       margin: 0 auto;
-      background: var(--soft-nude);
+      background: var(--white);
       border-radius: 150px 150px 20px 20px;
       border: 10px solid var(--white);
       box-shadow: var(--shadow);
@@ -146,13 +146,12 @@
       overflow: hidden;
     }
 
-    .hero-image-frame::before {
-      content: '\f030';
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      font-size: 5rem;
-      color: var(--white);
-      opacity: 0.3;
+    /* Logo Integration Styling */
+    .hero-logo-img {
+      width: 85%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 15px rgba(62, 46, 36, 0.1));
     }
 
     /* --- PRICING --- */
@@ -193,7 +192,6 @@
     
     .old-p { text-decoration: line-through; color: var(--mid-brown); font-size: 0.75rem; margin-right: 8px; font-weight: 400; opacity: 0.6; }
 
-    /* Extra Info Styling */
     .extra-info-box {
       margin-top: auto;
       font-size: 0.85rem;
@@ -261,28 +259,9 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 30px; border-radius: 25px;
       backdrop-filter: blur(10px);
-      position: relative;
     }
-
-    .bank-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-      width: 100%;
-    }
-
-    .bank-logo-img {
-      height: 25px;
-      width: auto;
-      object-fit: contain;
-      display: block;
-      /* Memastikan logo terlihat putih bersih di background gelap */
-      filter: brightness(0) invert(1);
-    }
-
-    .bank-card p { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin: 0; }
-    .bank-card strong { font-size: 1.4rem; letter-spacing: 2px; font-family: monospace; display: block; margin-top: 5px; }
+    .bank-card p { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .bank-card strong { font-size: 1.4rem; letter-spacing: 2px; font-family: monospace; }
     .bank-card small { font-size: 0.85rem; opacity: 0.8; margin-top: 5px; display: block; }
 
     /* --- FOOTER --- */
@@ -340,14 +319,16 @@
         Abadikan Cerita Anda <br><span style="color: var(--gold); font-style: italic;">Your story instantly captured.</span>
       </h2>
       <p style="font-size: 1.1rem; font-weight: 300; color: var(--mid-brown);">
-        Berasal dari kata <strong>"Monogatari"</strong> (Cerita), kami percaya setiap tawa dan pelukan di acara Anda adalah kisah yang berharga. Monoga Photobooth Bali hadir untuk memastikan kenangan Anda tidak hanya tersimpan di memori, tapi juga di saku tamu Anda.
+        Berasal dari kata <strong>"Monogatari"</strong> (Cerita), kami percaya setiap tawa dan pelukan di acara Anda adalah kisah yang berharga. Monoga Photobooth Bali hadir untuk memastikan kenangan Anda tidak hanya tersimpan di memori, tapi juga di genggaman.
       </p>
       <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: inherit;">
         <a href="#paket" class="btn">Lihat Paket Promo</a>
         <a href="https://wa.me/6281927310298" class="btn btn-outline" target="_blank">Konsultasi Jadwal</a>
       </div>
     </div>
-    <div class="hero-image-frame reveal active"></div>
+    <div class="hero-image-frame reveal active">
+      <img src="https://i.ibb.co.com/TBMmd3Xp/6611.jpg" alt="Monoga Logo" class="hero-logo-img">
+    </div>
   </section>
 
   <section id="paket" class="reveal">
@@ -381,6 +362,10 @@
               <i class="fas fa-plus-circle"></i>
               <span>Extra 1 Jam QR Scan: <strong>400k</strong></span>
             </div>
+            <div class="info-line">
+              <i class="fas fa-magic"></i>
+              <span>Sewa Welcome Mirror: <strong>250k</strong></span>
+            </div>
         </div>
       </div>
 
@@ -402,6 +387,10 @@
             <div class="info-line">
               <i class="fas fa-copy"></i>
               <span>Extra Print: <strong>15k</strong> / lembar</span>
+            </div>
+            <div class="info-line">
+              <i class="fas fa-magic"></i>
+              <span>Sewa Welcome Mirror: <strong>250k</strong></span>
             </div>
         </div>
       </div>
@@ -426,6 +415,10 @@
             <div class="info-line">
               <i class="fas fa-clock"></i>
               <span>Extra 1 Jam Unlimited: <strong>1.700k</strong></span>
+            </div>
+            <div class="info-line">
+              <i class="fas fa-magic"></i>
+              <span>Sewa Welcome Mirror: <strong>250k</strong></span>
             </div>
         </div>
       </div>
@@ -465,19 +458,13 @@
       </div>
       <div class="bank-wrapper">
         <div class="bank-card">
-          <div class="bank-header">
-            <p>BCA Account</p>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA" class="bank-logo-img">
-          </div>
-          <strong>7730691801</strong>
+          <p>BCA Account</p>
+          <strong>7730691801</strong><br>
           <small>a.n Ni Kadek Dwi Wahyuni</small>
         </div>
         <div class="bank-card">
-          <div class="bank-header">
-            <p>BRI Account</p>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/BRI_Logo.svg/1024px-BRI_Logo.svg.png" alt="BRI" class="bank-logo-img">
-          </div>
-          <strong>024801014999530</strong>
+          <p>BRI Account</p>
+          <strong>024801014999530</strong><br>
           <small>a.n Putu Dimas Sanjaya</small>
         </div>
       </div>
@@ -521,10 +508,10 @@
   document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      const targetId = this.getAttribute('href');
-      document.querySelector(targetId).scrollIntoView({
-        behavior: 'smooth'
-      });
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 </script>
